@@ -48,5 +48,8 @@
       "\\.(ts)$": "ts-jest"
     },
     "testRegex": ".test.ts"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }
