@@ -1,5 +1,5 @@
 {
-  "name": "aws-fhir-interface",
+  "name": "@awslabs/aws-fhir-interface",
   "version": "0.7.0",
   "description": "FHIR Solution hosted on AWS Lambda",
   "main": "lib/index.js",
@@ -51,5 +51,6 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
-  }
+  },
+  "repository": "git://github.com/awslabs/aws-fhir-interface.git"
 }
