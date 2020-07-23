@@ -2,8 +2,8 @@
   "name": "aws-fhir-interface",
   "version": "0.7.0",
   "description": "FHIR Solution hosted on AWS Lambda",
-  "main": "lib/index",
-  "typings": "lib/index",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "author": "amzn",
   "license": "Apache-2.0",
   "scripts": {
