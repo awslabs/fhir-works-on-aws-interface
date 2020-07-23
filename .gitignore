@@ -8,13 +8,10 @@
 
 Info_Output.yml
 dist
+lib
 .build
 .idea
 yarn-error.log
-
-
-auditLogMover/.serverless
-auditLogMover/node_modules
 
 coverage
 ##############################
