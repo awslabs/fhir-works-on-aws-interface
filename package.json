@@ -1,6 +1,6 @@
 {
   "name": "@awslabs/aws-fhir-interface",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "FHIR Solution hosted on AWS Lambda",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -17,8 +17,7 @@
     "clean": "rm -rf build/* node_modules/* dist/* .serverless/* .nyc_output/* lib/*",
     "local": "node ."
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^25.1.1",
     "@types/node": "^12",
