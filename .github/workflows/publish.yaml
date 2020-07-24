@@ -3,7 +3,7 @@
 #  SPDX-License-Identifier: Apache-2.0
 #
 
-name: publish Package
+name: Publish package
 
 on:
   push:
@@ -50,4 +50,4 @@ jobs:
       - run: git push --tags && git push
       - run: yarn publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
