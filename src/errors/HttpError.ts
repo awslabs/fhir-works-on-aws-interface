@@ -3,7 +3,8 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-export default class HttpError extends Error {
+// eslint-disable-next-line import/prefer-default-export
+export class HttpError extends Error {
     readonly statusCode: number;
 
     readonly errorDetail: any;

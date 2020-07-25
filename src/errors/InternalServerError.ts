@@ -3,9 +3,9 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import HttpError from './HttpError';
-
-export default class InternalServerError extends HttpError {
+import { HttpError } from './HttpError';
+// eslint-disable-next-line import/prefer-default-export
+export class InternalServerError extends HttpError {
     constructor(errorDetail: any) {
         // Node Error class requires passing a string message to the parent class
         super('Internal Server Error', 500, errorDetail);

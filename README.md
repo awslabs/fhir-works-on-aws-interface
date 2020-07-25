@@ -1,4 +1,4 @@
-# aws-fhir-interface (v 0.7.0)
+# aws-fhir-interface
 
 ## Purpose
 
