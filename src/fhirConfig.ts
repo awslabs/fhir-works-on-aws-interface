@@ -36,7 +36,7 @@ export interface GenericResource extends Resource {
 
 export interface Resource {
     operations: TypeOperation[];
-    versions: FhirVersion[];
+    fhirVersions: FhirVersion[];
     persistence: Persistence;
     typeHistory: History;
     typeSearch: Search;
@@ -47,7 +47,6 @@ export interface Resources {
 }
 
 export interface Profile {
-    configVersion: ConfigVersion;
     fhirVersion: FhirVersion;
     systemOperations: SystemOperation[];
     systemSearch: Search;
@@ -59,6 +58,7 @@ export interface Profile {
 
 export interface FhirConfig {
     orgName: string;
+    configVersion: ConfigVersion;
     auth: Auth;
     server: Server;
     logging: Logging;
