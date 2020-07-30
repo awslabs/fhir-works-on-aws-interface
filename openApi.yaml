@@ -1,13 +1,13 @@
 openapi: 3.0.0
 info:
-  description: This is the AWS Fhir Solution API
-  version: 1.0.0
   title: FHIR Solution
+  description: This is the AWS Fhir Solution API
   contact:
     email: aws-chamonix-dev@amazon.com
   license:
     name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
 tags:
   - name: authorization
     description: Calls to authorize the request
@@ -34,14 +34,14 @@ paths:
       responses:
         '204':
           description: Access granted
-        '403':
-          description: Forbidden
         '400':
           description: Request invalid
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
         '500':
           description: Internal service error
           content:
@@ -62,14 +62,14 @@ paths:
       responses:
         '204':
           description: Access granted
-        '403':
-          description: Forbidden
         '400':
           description: Request invalid
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
         '500':
           description: Internal service error
           content:
@@ -81,14 +81,14 @@ paths:
       tags:
         - bundle
       summary: Process a batch of requests
-      operationId: batch
       description: Process a batch of requests that are not dependent on each other
+      operationId: batch
       requestBody:
+        description: Inventory item to add
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/BatchRequest'
-        description: Inventory item to add
       responses:
         '200':
           description: Success
@@ -115,8 +115,8 @@ paths:
       tags:
         - bundle
       summary: authorize Bundle transactions
-      operationId: transaction
       description: Used to authorize Bundle transactions
+      operationId: transaction
       requestBody:
         content:
           application/json:
@@ -148,19 +148,23 @@ paths:
       tags:
         - history
       summary: Search the history of a single FHIR resource instance
-      operationId: instanceHistory
       description: Search the history of a single FHIR resource instance
+      operationId: instanceHistory
       parameters:
-        - in: path
-          name: id
+        - name: id
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             format: uuid
             example: fd8bcf46-ea06-4f9f-af5b-b62f68702d6d
-        - in: path
-          name: resourceType
+        - name: resourceType
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             example: Patient
@@ -190,12 +194,14 @@ paths:
       tags:
         - history
       summary: Search the history of a single FHIR resource type
-      operationId: typeHistory
       description: Search the history of a single FHIR resource type
+      operationId: typeHistory
       parameters:
-        - in: path
-          name: resourceType
+        - name: resourceType
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             example: Patient
@@ -223,8 +229,8 @@ paths:
       tags:
         - history
       summary: Searches all historical resources in the FHIR server
-      operationId: globalHistory
       description: Searches all historical resources in the FHIR server
+      operationId: globalHistory
       responses:
         '200':
           description: Success
@@ -249,12 +255,14 @@ paths:
       tags:
         - search
       summary: Search across a single FHIR resource type
-      operationId: typeSearch
       description: Search across a single FHIR resource type
+      operationId: typeSearch
       parameters:
-        - in: path
-          name: resourceType
+        - name: resourceType
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             example: Patient
@@ -282,8 +290,8 @@ paths:
       tags:
         - search
       summary: Searches all resources in the FHIR server
-      operationId: globalSearch
       description: Searches all resources in the FHIR server
+      operationId: globalSearch
       responses:
         '200':
           description: Success
@@ -310,9 +318,11 @@ paths:
       summary: create a new FHIR resource
       operationId: createResource
       parameters:
-        - in: path
-          name: resourceType
+        - name: resourceType
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             example: Patient
@@ -320,10 +330,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                resource:
-                  type: object
+              $ref: '#/components/schemas/ResourceRequest'
       responses:
         '201':
           description: Created
@@ -350,15 +357,19 @@ paths:
       summary: read a new FHIR resource
       operationId: readResource
       parameters:
-        - in: path
-          name: resourceType
+        - name: resourceType
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             example: Patient
-        - in: path
-          name: id
+        - name: id
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             format: uuid
@@ -384,15 +395,19 @@ paths:
       summary: update a new FHIR resource
       operationId: updateResource
       parameters:
-        - in: path
-          name: resourceType
+        - name: resourceType
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             example: Patient
-        - in: path
-          name: id
+        - name: id
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             format: uuid
@@ -401,10 +416,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                resource:
-                  type: object
+              $ref: '#/components/schemas/ResourceRequest'
       responses:
         '200':
           description: Updated
@@ -432,21 +444,59 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+        - persistence
+      summary: delete a FHIR resource
+      operationId: deleteResource
+      parameters:
+        - name: resourceType
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: Patient
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: uuid
+            example: fd8bcf46-ea06-4f9f-af5b-b62f68702d6d
+      responses:
+        '204':
+          description: Deleted
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal service error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     patch:
       tags:
         - persistence
       summary: patch a new FHIR resource
       operationId: patchResource
       parameters:
-        - in: path
-          name: resourceType
+        - name: resourceType
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             example: Patient
-        - in: path
-          name: id
+        - name: id
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             format: uuid
@@ -455,10 +505,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                resource:
-                  type: object
+              $ref: '#/components/schemas/ResourceRequest'
       responses:
         '200':
           description: Patched
@@ -480,36 +527,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-    delete:
-      tags:
-        - persistence
-      summary: delete a FHIR resource
-      operationId: deleteResource
-      parameters:
-        - in: path
-          name: resourceType
-          required: true
-          schema:
-            type: string
-            example: Patient
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: string
-            format: uuid
-            example: fd8bcf46-ea06-4f9f-af5b-b62f68702d6d
-      responses:
-        '204':
-          description: Deleted
-        '404':
-          description: Resource not found
-        '500':
-          description: Internal service error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
   /persistence/{resourceType}/{id}/{vid}:
     get:
       tags:
@@ -517,25 +534,31 @@ paths:
       summary: read a new FHIR resource
       operationId: vReadResource
       parameters:
-        - in: path
-          name: resourceType
+        - name: resourceType
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             example: Patient
-        - in: path
-          name: id
+        - name: id
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             format: uuid
             example: fd8bcf46-ea06-4f9f-af5b-b62f68702d6d
-        - in: path
-          name: vid
+        - name: vid
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
-            example: 1
+            example: '1'
       responses:
         '200':
           description: Found
@@ -562,9 +585,11 @@ paths:
       summary: conditionally create a new FHIR resource
       operationId: conditionalCreateResource
       parameters:
-        - in: path
-          name: resourceType
+        - name: resourceType
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             example: Patient
@@ -572,12 +597,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                resource:
-                  type: object
-                query:
-                  type: object
+              $ref: '#/components/schemas/ConditionalResourceRequest'
       responses:
         '201':
           description: Created
@@ -604,15 +624,19 @@ paths:
       summary: conditionally update a new FHIR resource
       operationId: conditionalUpdateResource
       parameters:
-        - in: path
-          name: resourceType
+        - name: resourceType
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             example: Patient
-        - in: path
-          name: id
+        - name: id
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             format: uuid
@@ -621,12 +645,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                resource:
-                  type: object
-                query:
-                  type: object
+              $ref: '#/components/schemas/ConditionalResourceRequest'
       responses:
         '200':
           description: Updated
@@ -652,21 +671,59 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+        - persistence
+      summary: conditionally delete a FHIR resource
+      operationId: conditionalDeleteResource
+      parameters:
+        - name: resourceType
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            example: Patient
+        - name: id
+          in: path
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
+            format: uuid
+            example: fd8bcf46-ea06-4f9f-af5b-b62f68702d6d
+      responses:
+        '204':
+          description: Deleted
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal service error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
     patch:
       tags:
         - persistence
       summary: conditionally patch a FHIR resource
       operationId: conditionalPatchResource
       parameters:
-        - in: path
-          name: resourceType
+        - name: resourceType
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             example: Patient
-        - in: path
-          name: id
+        - name: id
+          in: path
           required: true
+          style: simple
+          explode: false
           schema:
             type: string
             format: uuid
@@ -675,12 +732,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                resource:
-                  type: object
-                query:
-                  type: object
+              $ref: '#/components/schemas/ConditionalResourceRequest'
       responses:
         '200':
           description: Patched
@@ -700,41 +752,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-    delete:
-      tags:
-        - persistence
-      summary: conditionally delete a FHIR resource
-      operationId: conditionalDeleteResource
-      parameters:
-        - in: path
-          name: resourceType
-          required: true
-          schema:
-            type: string
-            example: Patient
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: string
-            format: uuid
-            example: fd8bcf46-ea06-4f9f-af5b-b62f68702d6d
-      responses:
-        '204':
-          description: Deleted
-        '404':
-          description: Resource not found
-        '500':
-          description: Internal service error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-
 components:
   schemas:
     AuthorizationRequest:
-      description: Request to authorize the user based on what they are trying to do
       required:
         - accessToken
         - operation
@@ -754,9 +774,10 @@ components:
           example: fd8bcf46-ea06-4f9f-af5b-b62f68702d6d
         vid:
           type: string
-          example: 1
+          example: '1'
+      description: Request to authorize the user based on what they are trying to
+        do
     AuthorizationBundleRequest:
-      description: Request to authorize the user based on all the things this bundle is trying to do
       required:
         - accessToken
         - requests
@@ -768,16 +789,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BatchReadWriteRequest'
+      description: Request to authorize the user based on all the things this bundle
+        is trying to do
     ErrorResponse:
-      description: Response when errors occur
       required:
         - message
       properties:
         message:
           type: string
           example: Could not find entry
+      description: Response when errors occur
     BundleResponse:
-      description: Response for Bundle interactions
       required:
         - batchReadWriteResponses
         - requests
@@ -786,11 +808,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BatchReadWriteResponse'
+      description: Response for Bundle interactions
     BatchRequest:
-      description: Request to process many operations that are independent of each other
       required:
-        - startTime
         - requests
+        - startTime
       properties:
         startTime:
           type: string
@@ -800,11 +822,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BatchReadWriteRequest'
+      description: Request to process many operations that are independent of each
+        other
     TransactionRequest:
-      description: Request to process many operations that are dependent of each other
       required:
-        - startTime
         - requests
+        - startTime
       properties:
         startTime:
           type: string
@@ -814,13 +837,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BatchReadWriteRequest'
+      description: Request to process many operations that are dependent of each other
     BatchReadWriteRequest:
-      description: A single request representing a Bundle entry
       required:
-        - operation
-        - resourceType
         - id
+        - operation
         - resource
+        - resourceType
       properties:
         operation:
           type: string
@@ -836,17 +859,17 @@ components:
           type: object
         vid:
           type: string
-          example: 1
+          example: '1'
         fullUrl:
           type: string
           format: url
-          example: 'https://www.acme-corp.com/Patient/1234'
+          example: https://www.acme-corp.com/Patient/1234
         references:
           type: array
           items:
             $ref: '#/components/schemas/Reference'
+      description: A single request representing a Bundle entry
     BatchReadWriteResponse:
-      description: A single response correlating to a single a Bundle entry
       required:
         - operation
         - resource
@@ -865,23 +888,23 @@ components:
           type: object
         vid:
           type: string
-          example: 1
+          example: '1'
+      description: A single response correlating to a single a Bundle entry
     GenericResponse:
-      description: A generic response for a successful operation
       required:
         - resource
       properties:
         resource:
           type: object
+      description: A generic response for a successful operation
     Reference:
-      description: A connection between entries in a Bundle
       required:
-        - resourceType
         - id
-        - vid
-        - rootUrl
         - referenceFullUrl
         - referencePath
+        - resourceType
+        - rootUrl
+        - vid
       properties:
         resourceType:
           type: string
@@ -892,17 +915,27 @@ components:
           example: fd8bcf46-ea06-4f9f-af5b-b62f68702d6d
         vid:
           type: string
-          example: 1
+          example: '1'
         rootUrl:
           type: string
           format: url
-          example: 'https://www.test-FHIR.com/'
+          example: https://www.test-FHIR.com/
         referenceFullUrl:
           type: string
           format: url
-          example: 'https://www.test-FHIR.com/Patient/123'
+          example: https://www.test-FHIR.com/Patient/123
         referencePath:
           type: string
           description: Where to find the reference in the Bundle entry
           example: 'provider.reference'
-  
+      description: A connection between entries in a Bundle
+    ResourceRequest:
+      properties:
+        resource:
+          type: object
+    ConditionalResourceRequest:
+      properties:
+        resource:
+          type: object
+        query:
+          type: object
