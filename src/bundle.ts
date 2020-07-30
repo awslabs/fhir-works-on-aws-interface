@@ -14,6 +14,7 @@ export interface TransactionRequest {
     startTime: Date;
 }
 
+// TODO all required?
 export interface BatchReadWriteResponse {
     id: string;
     vid: string;
@@ -28,7 +29,8 @@ export interface BatchReadWriteRequest {
     resourceType: string;
     id: string;
     vid?: string;
-    resource: any; // GET requests, only contains the URL of the resource
+    resource: any; // TODO this seems hacky
+    // GET requests, only contains the URL of the resource
     fullUrl?: string;
     references?: Reference[];
 }
@@ -39,6 +41,7 @@ export interface Reference {
     vid: string;
     rootUrl: string;
     referenceFullUrl: string;
+    // Where to find the reference in the Bundle entry
     referencePath: string;
 }
 
