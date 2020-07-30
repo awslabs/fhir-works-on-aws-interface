@@ -2,15 +2,23 @@
 
 ## Purpose
 
-TODO
+Please visit [aws-fhir-solution](https://github.com/awslabs/aws-fhir-solution) for overall vision of the project and for more context.
 
-## Install
+This package is the connective tissue between other packages in the aws-fhir ecosystem. This package declares what is the input/output expectation for each sub-component. To create your own component for use in the aws-fhir framework please see the overall [README](https://github.com/awslabs/aws-fhir-solution)
 
-TODO
+## Usage
+
+For usage please add this package to your `package.json` file and install as a dependency. For usage examples please see below:
+
+- [authorization component](https://github.com/awslabs/aws-fhir-authz-rbac)
+- [search component](https://github.com/awslabs/aws-fhir-search-es)
+- [persistence component](https://github.com/awslabs/aws-fhir-persistence-ddb)
+- [routing component](https://github.com/awslabs/aws-fhir-routing)
+- [deployment component](https://github.com/awslabs/aws-fhir-solution)
 
 ## Dependency tree
 
-TODO
+This package is not dependent on others.
 
 ## Known issues
 

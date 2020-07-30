@@ -3,7 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { FhirVersion, TypeOperation, R4Resource, R3Resource, SystemOperation } from './constants';
+import { FhirVersion, TypeOperation, R4Resource, R3Resource, SystemOperation, ConfigVersion } from './constants';
 import { Persistence } from './persistence';
 import { History } from './history';
 import { Search } from './search';
@@ -47,7 +47,8 @@ export interface Resources {
 }
 
 export interface Profile {
-    version: FhirVersion;
+    configVersion: ConfigVersion;
+    fhirVersion: FhirVersion;
     systemOperations: SystemOperation[];
     systemSearch: Search;
     systemHistory: History;
