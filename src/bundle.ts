@@ -29,7 +29,7 @@ export interface BatchReadWriteRequest {
     resourceType: string;
     id: string;
     vid?: string;
-    resource: any; // TODO this seems hacky
+    resource: any;
     // GET requests, only contains the URL of the resource
     fullUrl?: string;
     references?: Reference[];
@@ -41,7 +41,7 @@ export interface Reference {
     vid: string;
     rootUrl: string;
     referenceFullUrl: string;
-    // Where to find the reference in the Bundle entry
+    // This param tells where to find the reference in the Bundle entry
     referencePath: string;
 }
 
