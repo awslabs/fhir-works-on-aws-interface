@@ -371,8 +371,8 @@ SOFTWARE.
 
 ******************************
 
-aws-fhir-interface
-0.6.0 <>
+fhir-works-on-aws-interface
+0.8.0 <>
 
                                  Apache License
                            Version 2.0, January 2004
@@ -552,8 +552,8 @@ aws-fhir-interface
 
 ******************************
 
-aws-fhir-persistence
-0.6.0 <>
+fhir-works-on-aws-persistence
+0.8.0 <>
 
                                  Apache License
                            Version 2.0, January 2004
@@ -733,8 +733,8 @@ aws-fhir-persistence
 
 ******************************
 
-aws-fhir-rbac
-0.6.0 <>
+fhir-works-on-aws-rbac
+0.8.0 <>
 
                                  Apache License
                            Version 2.0, January 2004
@@ -914,8 +914,8 @@ aws-fhir-rbac
 
 ******************************
 
-aws-fhir-routing
-0.6.0 <>
+fhir-works-on-aws-routing
+0.8.0 <>
 
                                  Apache License
                            Version 2.0, January 2004
@@ -1095,8 +1095,8 @@ aws-fhir-routing
 
 ******************************
 
-aws-fhir-search-es
-0.6.0 <>
+fhir-works-on-aws-search-es
+0.8.0 <>
 
                                  Apache License
                            Version 2.0, January 2004
