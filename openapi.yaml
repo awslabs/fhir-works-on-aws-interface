@@ -1,7 +1,8 @@
 openapi: 3.0.0
 info:
-  title: FHIR Solution
-  description: This is the AWS Fhir Solution API
+  title: FHIR Works on AWS
+  description: This is an implementation of FHIR Works on AWS interface
+
   contact:
     email: aws-chamonix-dev@amazon.com
   license:

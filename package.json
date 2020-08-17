@@ -1,7 +1,7 @@
 {
-  "name": "@awslabs/aws-fhir-interface",
-  "version": "0.7.6",
-  "description": "FHIR Solution hosted on AWS Lambda",
+  "name": "@awslabs/fhir-works-on-aws-interface",
+  "version": "0.8.0",
+  "description": "FHIR Works on AWS hosted on AWS Lambda",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": "amzn",
@@ -51,5 +51,5 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
-  "repository": "git://github.com/awslabs/aws-fhir-interface.git"
+  "repository": "git://github.com/awslabs/fhir-works-on-aws-interface.git"
 }
