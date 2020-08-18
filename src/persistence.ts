@@ -3,7 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import GenericResponse from './genericResponse';
+import { GenericResponse } from './genericResponse';
 
 export interface CreateResourceRequest {
     resourceType: string;

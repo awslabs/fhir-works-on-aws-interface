@@ -3,7 +3,8 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-export default class ResourceVersionNotFoundError extends Error {
+// eslint-disable-next-line import/prefer-default-export
+export class ResourceVersionNotFoundError extends Error {
     readonly resourceType: string;
 
     readonly id: string;

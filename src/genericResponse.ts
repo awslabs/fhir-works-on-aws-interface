@@ -3,7 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-export default interface GenericResponse {
+export interface GenericResponse {
     readonly message: string;
     readonly resource?: any;
 }
