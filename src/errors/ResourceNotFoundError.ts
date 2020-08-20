@@ -13,6 +13,7 @@ export class ResourceNotFoundError extends Error {
         const msg = message || `Resource ${resourceType}/${id} is not known`;
         // Node Error class requires passing a string message to the parent class
         super(msg);
+        Object.setPrototypeOf(this, ResourceNotFoundError.prototype);
         this.resourceType = resourceType;
         this.id = id;
         this.name = this.constructor.name;

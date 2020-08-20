@@ -15,6 +15,7 @@ export class ResourceVersionNotFoundError extends Error {
         const msg = message || `Version "${version}" is not valid for resource ${resourceType}/${id}`;
         // Node Error class requires passing a string message to the parent class
         super(msg);
+        Object.setPrototypeOf(this, ResourceVersionNotFoundError.prototype);
         this.resourceType = resourceType;
         this.id = id;
         this.version = version;
