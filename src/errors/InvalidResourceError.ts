@@ -8,6 +8,7 @@ export class InvalidResourceError extends Error {
     constructor(message = 'Invalid Resource') {
         // Node Error class requires passing a string message to the parent class
         super(message);
+        Object.setPrototypeOf(this, InvalidResourceError.prototype);
         this.name = this.constructor.name;
     }
 }
