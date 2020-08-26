@@ -78,7 +78,7 @@ export type ConfigVersion = 1.0;
 export type FhirVersion = '3.0.1' | '4.0.1';
 
 export type R4Resource =
-    | R3Resource
+    | STU3Resource
     | 'BiologicallyDerivedProduct'
     | 'BodyStructure'
     | 'CatalogEntry'
@@ -121,7 +121,7 @@ export type R4Resource =
     | 'TerminologyCapabilities'
     | 'VerificationResult';
 
-export type R3Resource =
+export type STU3Resource =
     | 'Account'
     | 'ActivityDefinition'
     | 'AdverseEvent'

@@ -3,7 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { FhirVersion, TypeOperation, R4Resource, R3Resource, SystemOperation, ConfigVersion } from './constants';
+import { FhirVersion, TypeOperation, R4Resource, STU3Resource, SystemOperation, ConfigVersion } from './constants';
 import { Persistence } from './persistence';
 import { History } from './history';
 import { Search } from './search';
@@ -31,7 +31,7 @@ export interface Logging {
 
 export interface GenericResource extends Resource {
     excludedR4Resources?: R4Resource[];
-    excludedR3Resources?: R3Resource[];
+    excludedSTU3Resources?: STU3Resource[];
 }
 
 export interface Resource {
