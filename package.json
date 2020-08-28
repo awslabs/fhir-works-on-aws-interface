@@ -1,10 +1,19 @@
 {
-  "name": "@awslabs/fhir-works-on-aws-interface",
-  "version": "0.9.3",
+  "name": "fhir-works-on-aws-interface",
+  "version": "1.0.0",
   "description": "FHIR Works on AWS hosted on AWS Lambda",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "author": "amzn",
+  "author": {
+    "name": "Amazon Web Services",
+    "email": "fhir-works-on-aws-dev@amazon.com",
+    "url": "https://aws.amazon.com/"
+  },
+  "contributors": [
+    "Robert Smayda <smayda@amazon.com>",
+    "Tim Nguyen <thingut@amazon.com>",
+    "Nestor Carvantes <nestorba@amazon.com>"
+  ],
   "license": "Apache-2.0",
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx",
@@ -15,7 +24,8 @@
     "test-coverage": "jest --coverage",
     "release": "yarn run build && yarn run lint && yarn run test",
     "clean": "rm -rf build/* node_modules/* dist/* .serverless/* .nyc_output/* lib/*",
-    "local": "node ."
+    "local": "node .",
+    "prepublish": "tsc"
   },
   "dependencies": {},
   "devDependencies": {
@@ -51,5 +61,11 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
-  "repository": "git://github.com/awslabs/fhir-works-on-aws-interface.git"
+  "repository": {
+    "type": "git",
+    "url":"git://github.com/awslabs/fhir-works-on-aws-interface.git"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
 }
