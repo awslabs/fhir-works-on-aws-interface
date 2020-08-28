@@ -58,9 +58,6 @@
     },
     "testRegex": ".test.ts"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "repository": {
     "type": "git",
     "url":"git://github.com/awslabs/fhir-works-on-aws-interface.git"
