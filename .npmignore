@@ -13,5 +13,6 @@ tsconfig.json
 .eslintrc.js
 .eslintignore
 .prettierrc.js
+.github
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
