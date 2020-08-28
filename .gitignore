@@ -6,7 +6,6 @@
 # Ignore any zip files
 *.zip
 
-yarn.lock
 Info_Output.yml
 dist
 lib
