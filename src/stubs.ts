@@ -9,6 +9,7 @@ import { History } from './history';
 import { Authorization } from './authorization';
 import { Persistence } from './persistence';
 import { Bundle } from './bundle';
+import { ExportJobStatus, ExportRequestGranularity, R4Resource, STU3Resource } from './constants';
 
 export module stubs {
     export const bundle: Bundle = {
@@ -95,6 +96,18 @@ export module stubs {
 
         conditionalDeleteResource(request, queryParams) {
             throw new Error('Method not implemented.');
+        },
+
+        initiateExport(requesterUserId, requestGranularity, groupId, requestQueryParams, transactionTime) {
+            throw new Error('Method not implemented.');
+        },
+
+        cancelExport(jobId) {
+            throw new Error('Method not implemented');
+        },
+
+        getExportStatus(jobId) {
+            throw new Error('Method not implemented');
         },
     };
 }

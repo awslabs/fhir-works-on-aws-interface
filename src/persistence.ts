@@ -4,6 +4,7 @@
  */
 
 import { GenericResponse } from './genericResponse';
+import { ExportJobStatus, ExportRequestGranularity, R4Resource } from './constants';
 
 export interface CreateResourceRequest {
     resourceType: string;
@@ -124,4 +125,35 @@ export interface Persistence {
      * the appropriate action to take.
      */
     conditionalDeleteResource(request: ConditionalDeleteResourceRequest, queryParams: any): Promise<GenericResponse>;
+
+    /*
+     * Start the job for exporting the database into downloadable files. The file format of the downloadable files
+     * is specified by '_outputFormat'. This interface is to support the bulk export request API
+     * https://hl7.org/Fhir/uv/bulkdata/export/index.html#bulk-data-kick-off-request
+     */
+    initiateExport(
+        requesterUserId: string,
+        requestGranularity: ExportRequestGranularity,
+        requestQueryParams: { _outputFormat?: string; _since?: number; _type?: string },
+        transactionTime: number,
+        groupId?: string,
+    ): Promise<string>;
+
+    /*
+     * Cancel an export request that is currently running and delete any files that might have been
+     * generated during the export. This interface is to support the bulk export DELETE API
+     * https://hl7.org/Fhir/uv/bulkdata/export/index.html#bulk-data-delete-request
+     */
+    cancelExport(jobId: string): Promise<string>;
+
+    /*
+     * Get the current status of the export request. This includes the jobStatus of the job.
+     * If the jobStatus is completed return the exportedFileUrls of the exported files.
+     * Example of exportedFileUrls object: { Patient: [ s3Url1.com, s3Url2.com], Medication: [s3Url3.com]}
+     * This interface is to support the bulk export Data Status Request API
+     * https://hl7.org/Fhir/uv/bulkdata/export/index.html#bulk-data-status-request
+     */
+    getExportStatus(
+        jobId: ExportJobStatus,
+    ): Promise<{ jobStatus: string; exportedFileUrls: Record<R4Resource, [string]> }>;
 }

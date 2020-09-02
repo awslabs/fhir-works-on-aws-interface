@@ -239,3 +239,7 @@ export type STU3Resource =
     | 'TestReport'
     | 'ValueSet'
     | 'VisionPrescription';
+
+export type ExportRequestGranularity = 'system' | 'group' | 'patient';
+
+export type ExportJobStatus = 'completed' | 'failed' | 'in-progress' | 'canceled' | 'canceling';
