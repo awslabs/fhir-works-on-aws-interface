@@ -4,7 +4,7 @@
  */
 
 import { GenericResponse } from './genericResponse';
-import { ExportJobStatus, ExportRequestGranularity, R4Resource } from './constants';
+import { R4Resource } from './constants';
 
 export interface CreateResourceRequest {
     resourceType: string;
@@ -61,6 +61,10 @@ export interface GetExportStatusResponse {
     requestGranularity?: ExportRequestGranularity;
     requestQueryParams?: { _outputFormat?: string; _since?: number; _type?: string };
 }
+
+export type ExportRequestGranularity = 'system' | 'group' | 'patient';
+
+export type ExportJobStatus = 'completed' | 'failed' | 'in-progress' | 'canceled' | 'canceling';
 
 export interface Persistence {
     readonly updateCreateSupported: boolean;
