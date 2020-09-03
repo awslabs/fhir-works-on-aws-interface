@@ -96,5 +96,17 @@ export module stubs {
         conditionalDeleteResource(request, queryParams) {
             throw new Error('Method not implemented.');
         },
+
+        initiateExport(request) {
+            throw new Error('Method not implemented.');
+        },
+
+        cancelExport(jobId) {
+            throw new Error('Method not implemented');
+        },
+
+        getExportStatus(jobId) {
+            throw new Error('Method not implemented');
+        },
     };
 }
