@@ -98,7 +98,7 @@ export module stubs {
             throw new Error('Method not implemented.');
         },
 
-        initiateExport(requesterUserId, requestGranularity, groupId, requestQueryParams, transactionTime) {
+        initiateExport(request) {
             throw new Error('Method not implemented.');
         },
 
