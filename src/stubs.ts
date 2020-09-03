@@ -9,7 +9,6 @@ import { History } from './history';
 import { Authorization } from './authorization';
 import { Persistence } from './persistence';
 import { Bundle } from './bundle';
-import { ExportJobStatus, ExportRequestGranularity, R4Resource, STU3Resource } from './constants';
 
 export module stubs {
     export const bundle: Bundle = {
