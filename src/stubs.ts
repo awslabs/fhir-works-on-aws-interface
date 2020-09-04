@@ -53,6 +53,10 @@ export module stubs {
         async isBundleRequestAuthorized(request) {
             return true;
         },
+
+        getRequesterUserId(accessToken: string): string {
+            return 'random-userId';
+        },
     };
 
     export const persistence: Persistence = {

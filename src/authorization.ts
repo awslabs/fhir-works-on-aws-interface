@@ -8,7 +8,7 @@ import { TypeOperation, SystemOperation } from './constants';
 
 export interface AuthorizationRequest {
     accessToken: string;
-    operation: TypeOperation | SystemOperation;
+    operation: TypeOperation | SystemOperation | 'export';
     resourceType?: string;
     id?: string;
     vid?: string;
@@ -21,11 +21,16 @@ export interface AuthorizationBundleRequest {
 
 export interface Authorization {
     /**
-     * Validates if the requestor is authorized to perform the action requested
+     * Validates if the requester is authorized to perform the action requested
      */
     isAuthorized(request: AuthorizationRequest): boolean;
     /**
      * Used to authorize Bundle transactions
      */
     isBundleRequestAuthorized(request: AuthorizationBundleRequest): Promise<boolean>;
+
+    /**
+     * Get requester unique userId
+     */
+    getRequesterUserId(accessToken: string): string;
 }

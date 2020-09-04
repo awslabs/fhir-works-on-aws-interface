@@ -172,5 +172,5 @@ export interface Persistence {
      * @param jobId - Id of the job you would like to get the export status for
      * @return GetExportStatusResponse - The status of the export job as well as additional metadata information if the job is now completed
      */
-    getExportStatus(jobId: ExportJobStatus): Promise<GetExportStatusResponse>;
+    getExportStatus(jobId: string): Promise<GetExportStatusResponse>;
 }

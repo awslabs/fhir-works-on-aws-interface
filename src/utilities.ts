@@ -3,6 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
+import { url } from 'inspector';
 import { TypeOperation, SystemOperation } from './constants';
 
 export function chunkArray(myArray: any[], chunkSize: number): any[][] {
@@ -46,7 +47,7 @@ export function getRequestInformation(
     verb: string,
     urlPath: string,
 ): {
-    operation: TypeOperation | SystemOperation;
+    operation: TypeOperation | SystemOperation | 'export';
     resourceType?: string;
     id?: string;
     vid?: string;
@@ -76,6 +77,17 @@ export function getRequestInformation(
             };
         }
         case 'GET': {
+            console.log('inside get');
+            if (urlPath.includes('$export')) {
+                let resourceType = 'system';
+                if (urlPath.includes('/Patient/')) {
+                    resourceType = 'patient';
+                }
+                if (urlPath.includes('/Group/')) {
+                    resourceType = 'group';
+                }
+                return { operation: 'export', resourceType };
+            }
             if (urlSplit[urlSplit.length - 1].startsWith('_history')) {
                 // if the last section of the url string starts with history
                 if (urlSplit[0].startsWith('_history')) {
