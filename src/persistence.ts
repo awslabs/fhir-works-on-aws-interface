@@ -50,7 +50,9 @@ export interface InitiateExportRequest {
     requesterUserId: string;
     requestGranularity: ExportRequestGranularity;
     transactionTime: number;
-    requestQueryParams?: { _outputFormat?: string; _since?: number; _type?: string };
+    outputFormat?: string;
+    since?: number;
+    type?: string;
     groupId?: string;
 }
 

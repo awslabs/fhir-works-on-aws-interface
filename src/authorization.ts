@@ -12,6 +12,7 @@ export interface AuthorizationRequest {
     resourceType?: string;
     id?: string;
     vid?: string;
+    //TODO: Add export as a type here. Exp: exportType: none, system, group, patient
 }
 
 export interface AuthorizationBundleRequest {

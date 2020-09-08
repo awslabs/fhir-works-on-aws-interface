@@ -77,7 +77,6 @@ export function getRequestInformation(
             };
         }
         case 'GET': {
-            console.log('inside get');
             if (urlPath.includes('$export')) {
                 let resourceType = 'system';
                 if (urlPath.includes('/Patient/')) {

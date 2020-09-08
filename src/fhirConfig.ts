@@ -63,4 +63,5 @@ export interface FhirConfig {
     server: Server;
     logging: Logging;
     profile: Profile;
+    defaultRetryRequestInSeconds: number;
 }
