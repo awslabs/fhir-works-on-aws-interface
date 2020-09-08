@@ -98,6 +98,18 @@ describe('getRequestInformation', () => {
         const results = getRequestInformation('GET', '');
         expect(results).toEqual({ operation: 'search-system' });
     });
+    test('verb: GET; export system', async () => {
+        const results = getRequestInformation('GET', '/$export');
+        expect(results).toEqual({ operation: 'read', exportType: 'system' });
+    });
+    test('verb: GET; export patient', async () => {
+        const results = getRequestInformation('GET', '/Patient/$export');
+        expect(results).toEqual({ operation: 'read', exportType: 'patient' });
+    });
+    test('verb: GET; export group', async () => {
+        const results = getRequestInformation('GET', '/Group/1/$export');
+        expect(results).toEqual({ operation: 'read', exportType: 'group' });
+    });
     test('verb: POST; search on type', async () => {
         const results = getRequestInformation('POST', '/Patient/_search?name=joe');
         expect(results).toEqual({ operation: 'search-type', resourceType: 'Patient' });
