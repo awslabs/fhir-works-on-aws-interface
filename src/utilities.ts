@@ -4,7 +4,7 @@
  */
 
 import { url } from 'inspector';
-import { TypeOperation, SystemOperation } from './constants';
+import { TypeOperation, SystemOperation, ExportType } from './constants';
 
 export function chunkArray(myArray: any[], chunkSize: number): any[][] {
     const results = [];
@@ -47,10 +47,11 @@ export function getRequestInformation(
     verb: string,
     urlPath: string,
 ): {
-    operation: TypeOperation | SystemOperation | 'export';
+    operation: TypeOperation | SystemOperation;
     resourceType?: string;
     id?: string;
     vid?: string;
+    exportType?: ExportType;
 } {
     const path = cleanUrlPath(urlPath);
     const urlSplit = path.split('/');
@@ -78,14 +79,14 @@ export function getRequestInformation(
         }
         case 'GET': {
             if (urlPath.includes('$export')) {
-                let resourceType = 'system';
+                let exportType: ExportType = 'system';
                 if (urlPath.includes('/Patient/')) {
-                    resourceType = 'patient';
+                    exportType = 'patient';
                 }
                 if (urlPath.includes('/Group/')) {
-                    resourceType = 'group';
+                    exportType = 'group';
                 }
-                return { operation: 'export', resourceType };
+                return { operation: 'read', exportType };
             }
             if (urlSplit[urlSplit.length - 1].startsWith('_history')) {
                 // if the last section of the url string starts with history

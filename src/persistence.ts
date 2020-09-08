@@ -4,7 +4,7 @@
  */
 
 import { GenericResponse } from './genericResponse';
-import { R4Resource } from './constants';
+import { ExportType, R4Resource } from './constants';
 
 export interface CreateResourceRequest {
     resourceType: string;
@@ -48,7 +48,7 @@ export interface ConditionalDeleteResourceRequest {
 
 export interface InitiateExportRequest {
     requesterUserId: string;
-    requestGranularity: ExportRequestGranularity;
+    requestGranularity: ExportType;
     transactionTime: number;
     outputFormat?: string;
     since?: number;
@@ -60,11 +60,9 @@ export interface GetExportStatusResponse {
     jobStatus: string;
     exportedFileUrls?: [{ type: R4Resource; url: string }];
     transactionTime?: number;
-    requestGranularity?: ExportRequestGranularity;
+    requestGranularity?: ExportType;
     requestQueryParams?: { _outputFormat?: string; _since?: number; _type?: string };
 }
-
-export type ExportRequestGranularity = 'system' | 'group' | 'patient';
 
 export type ExportJobStatus = 'completed' | 'failed' | 'in-progress' | 'canceled' | 'canceling';
 

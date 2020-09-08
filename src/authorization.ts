@@ -4,15 +4,15 @@
  */
 
 import { BatchReadWriteRequest } from './bundle';
-import { TypeOperation, SystemOperation } from './constants';
+import { TypeOperation, SystemOperation, ExportType } from './constants';
 
 export interface AuthorizationRequest {
     accessToken: string;
-    operation: TypeOperation | SystemOperation | 'export';
+    operation: TypeOperation | SystemOperation;
     resourceType?: string;
     id?: string;
     vid?: string;
-    //TODO: Add export as a type here. Exp: exportType: none, system, group, patient
+    exportType?: ExportType;
 }
 
 export interface AuthorizationBundleRequest {

@@ -77,6 +77,8 @@ export type ConfigVersion = 1.0;
  */
 export type FhirVersion = '3.0.1' | '4.0.1';
 
+export type ExportType = 'system' | 'group' | 'patient';
+
 export type R4Resource =
     | STU3Resource
     | 'BiologicallyDerivedProduct'
