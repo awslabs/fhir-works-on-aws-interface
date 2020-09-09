@@ -242,7 +242,7 @@ export type STU3Resource =
     | 'ValueSet'
     | 'VisionPrescription';
 
-export const SUPPORTED_R4_RESOURCES: R4Resource[] = [
+export const BASE_R4_RESOURCES: R4Resource[] = [
     'Account',
     'ActivityDefinition',
     'AdverseEvent',
@@ -390,7 +390,7 @@ export const SUPPORTED_R4_RESOURCES: R4Resource[] = [
     'VisionPrescription',
 ];
 
-export const SUPPORTED_STU3_RESOURCES: STU3Resource[] = [
+export const BASE_STU3_RESOURCES: STU3Resource[] = [
     'Account',
     'ActivityDefinition',
     'AdverseEvent',
@@ -510,7 +510,7 @@ export const SUPPORTED_STU3_RESOURCES: STU3Resource[] = [
     'VisionPrescription',
 ];
 
-export const PATIENT_COMPARTMENT_RESOURCES: R4Resource[] = [
+export const R4_PATIENT_COMPARTMENT_RESOURCES: R4Resource[] = [
     'Account',
     'AllergyIntolerance',
     'Appointment',
@@ -552,6 +552,73 @@ export const PATIENT_COMPARTMENT_RESOURCES: R4Resource[] = [
     'Provenance',
     'QuestionnaireResponse',
     'RelatedPerson',
+    'RiskAssessment',
+    'Schedule',
+    'Specimen',
+    'SupplyDelivery',
+    'SupplyRequest',
+    'VisionPrescription',
+];
+
+export const STU3_PATIENT_COMPARTMENT_RESOURCES: STU3Resource[] = [
+    'Account',
+    'AdverseEvent',
+    'AllergyIntolerance',
+    'Appointment',
+    'AppointmentResponse',
+    'AuditEvent',
+    'Basic',
+    'BodySite',
+    'CarePlan',
+    'CareTeam',
+    'ChargeItem',
+    'Claim',
+    'ClaimResponse',
+    'ClinicalImpression',
+    'Communication',
+    'CommunicationRequest',
+    'Composition',
+    'Condition',
+    'Consent',
+    'Coverage',
+    'DetectedIssue',
+    'DeviceRequest',
+    'DeviceUseStatement',
+    'DiagnosticReport',
+    'DocumentManifest',
+    'DocumentReference',
+    'EligibilityRequest',
+    'Encounter',
+    'EnrollmentRequest',
+    'EpisodeOfCare',
+    'ExplanationOfBenefit',
+    'FamilyMemberHistory',
+    'Flag',
+    'Goal',
+    'Group',
+    'ImagingManifest',
+    'ImagingStudy',
+    'Immunization',
+    'ImmunizationRecommendation',
+    'List',
+    'MeasureReport',
+    'Media',
+    'MedicationAdministration',
+    'MedicationDispense',
+    'MedicationRequest',
+    'MedicationStatement',
+    'NutritionOrder',
+    'Observation',
+    'Patient',
+    'Person',
+    'Procedure',
+    'ProcedureRequest',
+    'Provenance',
+    'QuestionnaireResponse',
+    'ReferralRequest',
+    'RelatedPerson',
+    'RequestGroup',
+    'ResearchSubject',
     'RiskAssessment',
     'Schedule',
     'Specimen',

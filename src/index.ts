@@ -4,6 +4,7 @@
  */
 
 export * from './authorization';
+export * from './bulkDataAccess';
 export * from './bundle';
 export * from './capabilities';
 export * from './constants';
