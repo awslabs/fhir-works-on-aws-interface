@@ -4,7 +4,8 @@
  */
 
 import { url } from 'inspector';
-import { TypeOperation, SystemOperation, ExportType } from './constants';
+import { TypeOperation, SystemOperation } from './constants';
+import { ExportType } from './bulkDataAccess';
 
 export function chunkArray(myArray: any[], chunkSize: number): any[][] {
     const results = [];

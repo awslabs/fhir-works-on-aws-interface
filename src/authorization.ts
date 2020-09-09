@@ -4,7 +4,8 @@
  */
 
 import { BatchReadWriteRequest } from './bundle';
-import { TypeOperation, SystemOperation, ExportType } from './constants';
+import { TypeOperation, SystemOperation } from './constants';
+import { ExportType } from './bulkDataAccess';
 
 export interface AuthorizationRequest {
     accessToken: string;
