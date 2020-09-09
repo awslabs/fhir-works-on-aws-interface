@@ -1,5 +1,3 @@
-import { ExportType } from './constants';
-
 export interface InitiateExportRequest {
     requesterUserId: string;
     exportType: ExportType;
@@ -11,13 +9,19 @@ export interface InitiateExportRequest {
 }
 
 export interface GetExportStatusResponse {
-    jobStatus: string;
+    jobStatus: ExportJobStatus;
     exportedFileUrls?: [{ type: string; url: string }];
     transactionTime?: number;
-    requestGranularity?: ExportType;
-    requestQueryParams?: { _outputFormat?: string; _since?: number; _type?: string };
+    exportType?: ExportType;
+    outputFormat?: string;
+    since?: number;
+    type?: string;
+    groupId?: string;
 }
+
 export type ExportJobStatus = 'completed' | 'failed' | 'in-progress' | 'canceled' | 'canceling';
+
+export type ExportType = 'system' | 'group' | 'patient';
 
 export interface BulkDataAccess {
     /**
