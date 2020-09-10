@@ -53,7 +53,7 @@ export interface Profile {
     systemSearch: Search;
     systemHistory: History;
     bundle: Bundle;
-    export?: BulkDataAccess;
+    bulkDataAccess?: BulkDataAccess;
     genericResource?: GenericResource;
     resources?: Resources;
 }
