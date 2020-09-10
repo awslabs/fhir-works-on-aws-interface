@@ -1,9 +1,9 @@
 export interface InitiateExportRequest {
     requesterUserId: string;
     exportType: ExportType;
-    transactionTime: number;
+    transactionTime: string;
     outputFormat?: string;
-    since?: number;
+    since?: string;
     type?: string;
     groupId?: string;
 }
@@ -11,10 +11,10 @@ export interface InitiateExportRequest {
 export interface GetExportStatusResponse {
     jobStatus: ExportJobStatus;
     exportedFileUrls?: [{ type: string; url: string }];
-    transactionTime?: number;
+    transactionTime?: string;
     exportType?: ExportType;
     outputFormat?: string;
-    since?: number;
+    since?: string;
     type?: string;
     groupId?: string;
 }
