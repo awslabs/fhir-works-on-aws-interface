@@ -9,6 +9,7 @@ import { History } from './history';
 import { Search } from './search';
 import { Authorization } from './authorization';
 import { Bundle } from './bundle';
+import { BulkDataAccess } from './bulkDataAccess';
 
 export interface Strategy {
     oauthUrl?: string;
@@ -52,6 +53,7 @@ export interface Profile {
     systemSearch: Search;
     systemHistory: History;
     bundle: Bundle;
+    bulkDataAccess?: BulkDataAccess;
     genericResource?: GenericResource;
     resources?: Resources;
 }

@@ -5,6 +5,7 @@
 
 import { BatchReadWriteRequest } from './bundle';
 import { TypeOperation, SystemOperation } from './constants';
+import { ExportType } from './bulkDataAccess';
 
 export interface AuthorizationRequest {
     accessToken: string;
@@ -12,6 +13,7 @@ export interface AuthorizationRequest {
     resourceType?: string;
     id?: string;
     vid?: string;
+    exportType?: ExportType;
 }
 
 export interface AuthorizationBundleRequest {
@@ -21,11 +23,16 @@ export interface AuthorizationBundleRequest {
 
 export interface Authorization {
     /**
-     * Validates if the requestor is authorized to perform the action requested
+     * Validates if the requester is authorized to perform the action requested
      */
     isAuthorized(request: AuthorizationRequest): boolean;
     /**
      * Used to authorize Bundle transactions
      */
     isBundleRequestAuthorized(request: AuthorizationBundleRequest): Promise<boolean>;
+
+    /**
+     * Get requester unique userId
+     */
+    getRequesterUserId(accessToken: string): string;
 }

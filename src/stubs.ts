@@ -9,6 +9,7 @@ import { History } from './history';
 import { Authorization } from './authorization';
 import { Persistence } from './persistence';
 import { Bundle } from './bundle';
+import { BulkDataAccess } from './bulkDataAccess';
 
 export module stubs {
     export const bundle: Bundle = {
@@ -53,6 +54,10 @@ export module stubs {
         async isBundleRequestAuthorized(request) {
             return true;
         },
+
+        getRequesterUserId(accessToken: string): string {
+            return 'random-userId';
+        },
     };
 
     export const persistence: Persistence = {
@@ -96,7 +101,9 @@ export module stubs {
         conditionalDeleteResource(request, queryParams) {
             throw new Error('Method not implemented.');
         },
+    };
 
+    export const bulkDataAccess: BulkDataAccess = {
         initiateExport(request) {
             throw new Error('Method not implemented.');
         },
