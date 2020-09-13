@@ -21,6 +21,7 @@ export interface ExportAuth {
     jobRequesterUserId?: string;
     type?: ExportType;
 }
+
 export interface AuthorizationBundleRequest {
     accessToken: string;
     requests: BatchReadWriteRequest[];
