@@ -6,6 +6,7 @@
 import { url } from 'inspector';
 import { TypeOperation, SystemOperation } from './constants';
 import { ExportType } from './bulkDataAccess';
+import { ExportAuth } from './authorization';
 
 export function chunkArray(myArray: any[], chunkSize: number): any[][] {
     const results = [];
@@ -52,10 +53,11 @@ export function getRequestInformation(
     resourceType?: string;
     id?: string;
     vid?: string;
-    exportType?: ExportType;
+    export?: ExportAuth;
 } {
     const path = cleanUrlPath(urlPath);
     const urlSplit = path.split('/');
+    const exportJobUrlRegExp = /\$export\/(\w+)\/([\w|-]+)/;
     switch (verb) {
         case 'PUT': {
             return {
@@ -72,6 +74,18 @@ export function getRequestInformation(
             };
         }
         case 'DELETE': {
+            if (exportJobUrlRegExp.test(urlPath)) {
+                const matches = urlPath.match(exportJobUrlRegExp);
+                const jobRequesterUserId = matches && matches.length > 1 ? matches[1] : '';
+                const operation = 'cancel-export';
+                return {
+                    operation: 'delete',
+                    export: {
+                        jobRequesterUserId,
+                        operation,
+                    },
+                };
+            }
             return {
                 operation: 'delete',
                 resourceType: urlSplit[0],
@@ -80,14 +94,33 @@ export function getRequestInformation(
         }
         case 'GET': {
             if (urlPath.includes('$export')) {
-                let exportType: ExportType = 'system';
+                if (exportJobUrlRegExp.test(urlPath)) {
+                    const matches = urlPath.match(exportJobUrlRegExp);
+                    const jobRequesterUserId = matches && matches.length > 1 ? matches[1] : '';
+                    const operation = 'get-status';
+                    return {
+                        operation: 'read',
+                        export: {
+                            jobRequesterUserId,
+                            operation,
+                        },
+                    };
+                }
+
+                let type: ExportType = 'system';
                 if (urlPath.includes('/Patient/')) {
-                    exportType = 'patient';
+                    type = 'patient';
                 }
                 if (urlPath.includes('/Group/')) {
-                    exportType = 'group';
+                    type = 'group';
                 }
-                return { operation: 'read', exportType };
+                return {
+                    operation: 'read',
+                    export: {
+                        type,
+                        operation: 'initiate-export',
+                    },
+                };
             }
             if (urlSplit[urlSplit.length - 1].startsWith('_history')) {
                 // if the last section of the url string starts with history

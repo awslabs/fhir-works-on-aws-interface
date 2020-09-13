@@ -13,9 +13,14 @@ export interface AuthorizationRequest {
     resourceType?: string;
     id?: string;
     vid?: string;
-    exportType?: ExportType;
+    export?: ExportAuth;
 }
 
+export interface ExportAuth {
+    operation: 'initiate-export' | 'get-status' | 'cancel-export';
+    jobRequesterUserId?: string;
+    type?: ExportType;
+}
 export interface AuthorizationBundleRequest {
     accessToken: string;
     requests: BatchReadWriteRequest[];
