@@ -3,10 +3,9 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { url } from 'inspector';
 import { TypeOperation, SystemOperation } from './constants';
 import { ExportType } from './bulkDataAccess';
-import { ExportAuth } from './authorization';
+import { BulkDataAuth } from './authorization';
 
 export function chunkArray(myArray: any[], chunkSize: number): any[][] {
     const results = [];
@@ -53,11 +52,11 @@ export function getRequestInformation(
     resourceType?: string;
     id?: string;
     vid?: string;
-    export?: ExportAuth;
+    bulkDataAuth?: BulkDataAuth;
 } {
     const path = cleanUrlPath(urlPath);
     const urlSplit = path.split('/');
-    const exportJobUrlRegExp = /\$export\/(\w+)\/([\w|-]+)/;
+    const exportJobUrlRegExp = /\$export\/[\w|-]+/;
     switch (verb) {
         case 'PUT': {
             return {
@@ -75,13 +74,10 @@ export function getRequestInformation(
         }
         case 'DELETE': {
             if (exportJobUrlRegExp.test(urlPath)) {
-                const matches = urlPath.match(exportJobUrlRegExp);
-                const jobRequesterUserId = matches && matches.length > 1 ? matches[1] : '';
-                const operation = 'cancel-export';
+                const operation = 'cancel';
                 return {
                     operation: 'delete',
-                    export: {
-                        jobRequesterUserId,
+                    bulkDataAuth: {
                         operation,
                     },
                 };
@@ -95,13 +91,10 @@ export function getRequestInformation(
         case 'GET': {
             if (urlPath.includes('$export')) {
                 if (exportJobUrlRegExp.test(urlPath)) {
-                    const matches = urlPath.match(exportJobUrlRegExp);
-                    const jobRequesterUserId = matches && matches.length > 1 ? matches[1] : '';
                     const operation = 'get-status';
                     return {
                         operation: 'read',
-                        export: {
-                            jobRequesterUserId,
+                        bulkDataAuth: {
                             operation,
                         },
                     };
@@ -116,7 +109,7 @@ export function getRequestInformation(
                 }
                 return {
                     operation: 'read',
-                    export: {
+                    bulkDataAuth: {
                         type,
                         operation: 'initiate-export',
                     },

@@ -125,7 +125,7 @@ describe('getRequestInformation', () => {
                 const results = getRequestInformation('GET', '/$export');
                 expect(results).toEqual({
                     operation: 'read',
-                    export: {
+                    bulkDataAuth: {
                         operation: 'initiate-export',
                         type: 'system',
                     },
@@ -135,7 +135,7 @@ describe('getRequestInformation', () => {
                 const results = getRequestInformation('GET', '/Patient/$export');
                 expect(results).toEqual({
                     operation: 'read',
-                    export: {
+                    bulkDataAuth: {
                         operation: 'initiate-export',
                         type: 'patient',
                     },
@@ -145,7 +145,7 @@ describe('getRequestInformation', () => {
                 const results = getRequestInformation('GET', '/Group/1/$export');
                 expect(results).toEqual({
                     operation: 'read',
-                    export: {
+                    bulkDataAuth: {
                         operation: 'initiate-export',
                         type: 'group',
                     },
@@ -153,25 +153,21 @@ describe('getRequestInformation', () => {
             });
         });
         test('get-status', async () => {
-            const results = getRequestInformation('GET', '/$export/workshopuser/a91b2a31-a964-4919-a220-8be73fb053dd');
+            const results = getRequestInformation('GET', '/$export/a91b2a31-a964-4919-a220-8be73fb053dd');
             expect(results).toEqual({
                 operation: 'read',
-                export: {
-                    jobRequesterUserId: 'workshopuser',
+                bulkDataAuth: {
                     operation: 'get-status',
                 },
             });
         });
+
         test('cancel-export', async () => {
-            const results = getRequestInformation(
-                'DELETE',
-                '/$export/workshopuser/a91b2a31-a964-4919-a220-8be73fb053dd',
-            );
+            const results = getRequestInformation('DELETE', '/$export/a91b2a31-a964-4919-a220-8be73fb053dd');
             expect(results).toEqual({
                 operation: 'delete',
-                export: {
-                    jobRequesterUserId: 'workshopuser',
-                    operation: 'cancel-export',
+                bulkDataAuth: {
+                    operation: 'cancel',
                 },
             });
         });

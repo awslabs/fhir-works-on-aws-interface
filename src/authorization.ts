@@ -13,13 +13,13 @@ export interface AuthorizationRequest {
     resourceType?: string;
     id?: string;
     vid?: string;
-    export?: ExportAuth;
+    bulkDataAuth?: BulkDataAuth;
 }
 
-export interface ExportAuth {
-    operation: 'initiate-export' | 'get-status' | 'cancel-export';
-    jobRequesterUserId?: string;
+export interface BulkDataAuth {
+    operation: 'initiate-export' | 'initiate-import' | 'get-status' | 'cancel';
     type?: ExportType;
+    resources?: string[];
 }
 
 export interface AuthorizationBundleRequest {
