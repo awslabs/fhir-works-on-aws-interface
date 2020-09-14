@@ -157,7 +157,7 @@ describe('getRequestInformation', () => {
             expect(results).toEqual({
                 operation: 'read',
                 bulkDataAuth: {
-                    operation: 'get-status',
+                    operation: 'get-status-export',
                 },
             });
         });
@@ -167,7 +167,7 @@ describe('getRequestInformation', () => {
             expect(results).toEqual({
                 operation: 'delete',
                 bulkDataAuth: {
-                    operation: 'cancel',
+                    operation: 'cancel-export',
                 },
             });
         });

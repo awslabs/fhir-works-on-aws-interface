@@ -74,7 +74,7 @@ export function getRequestInformation(
         }
         case 'DELETE': {
             if (exportJobUrlRegExp.test(urlPath)) {
-                const operation = 'cancel';
+                const operation = 'cancel-export';
                 return {
                     operation: 'delete',
                     bulkDataAuth: {
@@ -91,7 +91,7 @@ export function getRequestInformation(
         case 'GET': {
             if (urlPath.includes('$export')) {
                 if (exportJobUrlRegExp.test(urlPath)) {
-                    const operation = 'get-status';
+                    const operation = 'get-status-export';
                     return {
                         operation: 'read',
                         bulkDataAuth: {
