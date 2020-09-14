@@ -19,7 +19,7 @@ export interface AuthorizationRequest {
 export interface BulkDataAuth {
     operation: 'initiate-export' | 'initiate-import' | 'get-status' | 'cancel';
     exportType?: ExportType;
-    resources?: string[];
+    importResources?: string[];
 }
 
 export interface AuthorizationBundleRequest {
