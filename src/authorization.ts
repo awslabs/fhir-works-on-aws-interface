@@ -18,7 +18,7 @@ export interface AuthorizationRequest {
 
 export interface BulkDataAuth {
     operation: 'initiate-export' | 'initiate-import' | 'get-status' | 'cancel';
-    type?: ExportType;
+    exportType?: ExportType;
     resources?: string[];
 }
 

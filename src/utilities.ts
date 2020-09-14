@@ -100,17 +100,17 @@ export function getRequestInformation(
                     };
                 }
 
-                let type: ExportType = 'system';
+                let exportType: ExportType = 'system';
                 if (urlPath.includes('/Patient/')) {
-                    type = 'patient';
+                    exportType = 'patient';
                 }
                 if (urlPath.includes('/Group/')) {
-                    type = 'group';
+                    exportType = 'group';
                 }
                 return {
                     operation: 'read',
                     bulkDataAuth: {
-                        type,
+                        exportType,
                         operation: 'initiate-export',
                     },
                 };

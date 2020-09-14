@@ -127,7 +127,7 @@ describe('getRequestInformation', () => {
                     operation: 'read',
                     bulkDataAuth: {
                         operation: 'initiate-export',
-                        type: 'system',
+                        exportType: 'system',
                     },
                 });
             });
@@ -137,7 +137,7 @@ describe('getRequestInformation', () => {
                     operation: 'read',
                     bulkDataAuth: {
                         operation: 'initiate-export',
-                        type: 'patient',
+                        exportType: 'patient',
                     },
                 });
             });
@@ -147,7 +147,7 @@ describe('getRequestInformation', () => {
                     operation: 'read',
                     bulkDataAuth: {
                         operation: 'initiate-export',
-                        type: 'group',
+                        exportType: 'group',
                     },
                 });
             });
