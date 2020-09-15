@@ -55,6 +55,10 @@ export module stubs {
             return true;
         },
 
+        isAllowedToAccessBulkDataJob(requesterId: string, jobOwnerId: string) {
+            return true;
+        },
+
         getRequesterUserId(accessToken: string): string {
             return 'random-userId';
         },

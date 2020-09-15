@@ -43,6 +43,11 @@ export interface Authorization {
      */
     isBundleRequestAuthorized(request: AuthorizationBundleRequest): Promise<boolean>;
 
+    /*
+     * Used to determine if a requester can access a Bulk Data Job
+     */
+    isAllowedToAccessBulkDataJob(requesterId: string, jobOwnerId: string): boolean;
+
     /**
      * Get requester unique userId
      */
