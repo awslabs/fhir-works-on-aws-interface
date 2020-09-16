@@ -4,7 +4,7 @@ info:
   description: This is an implementation of FHIR Works on AWS interface
 
   contact:
-    email: aws-chamonix-dev@amazon.com
+    email: fhir-works-on-aws-dev@amazon.com
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
