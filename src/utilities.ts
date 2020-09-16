@@ -3,9 +3,9 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { url } from 'inspector';
 import { TypeOperation, SystemOperation } from './constants';
 import { ExportType } from './bulkDataAccess';
+import { BulkDataAuth } from './authorization';
 
 export function chunkArray(myArray: any[], chunkSize: number): any[][] {
     const results = [];
@@ -52,10 +52,11 @@ export function getRequestInformation(
     resourceType?: string;
     id?: string;
     vid?: string;
-    exportType?: ExportType;
+    bulkDataAuth?: BulkDataAuth;
 } {
     const path = cleanUrlPath(urlPath);
     const urlSplit = path.split('/');
+    const exportJobUrlRegExp = /\$export\/[\w|-]+/;
     switch (verb) {
         case 'PUT': {
             return {
@@ -72,6 +73,15 @@ export function getRequestInformation(
             };
         }
         case 'DELETE': {
+            if (exportJobUrlRegExp.test(urlPath)) {
+                const operation = 'cancel-export';
+                return {
+                    operation: 'delete',
+                    bulkDataAuth: {
+                        operation,
+                    },
+                };
+            }
             return {
                 operation: 'delete',
                 resourceType: urlSplit[0],
@@ -80,6 +90,16 @@ export function getRequestInformation(
         }
         case 'GET': {
             if (urlPath.includes('$export')) {
+                if (exportJobUrlRegExp.test(urlPath)) {
+                    const operation = 'get-status-export';
+                    return {
+                        operation: 'read',
+                        bulkDataAuth: {
+                            operation,
+                        },
+                    };
+                }
+
                 let exportType: ExportType = 'system';
                 if (urlPath.includes('/Patient/')) {
                     exportType = 'patient';
@@ -87,7 +107,13 @@ export function getRequestInformation(
                 if (urlPath.includes('/Group/')) {
                     exportType = 'group';
                 }
-                return { operation: 'read', exportType };
+                return {
+                    operation: 'read',
+                    bulkDataAuth: {
+                        exportType,
+                        operation: 'initiate-export',
+                    },
+                };
             }
             if (urlSplit[urlSplit.length - 1].startsWith('_history')) {
                 // if the last section of the url string starts with history

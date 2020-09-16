@@ -10,13 +10,16 @@ export interface InitiateExportRequest {
 
 export interface GetExportStatusResponse {
     jobStatus: ExportJobStatus;
+    jobOwnerId: string;
     exportedFileUrls?: [{ type: string; url: string }];
     transactionTime?: string;
     exportType?: ExportType;
-    outputFormat?: string;
-    since?: string;
-    type?: string;
+    outputFormat?: string; // query _outputFormat, required to allow building of request url, https://hl7.org/Fhir/uv/bulkdata/export/index.html#query-parameters
+    since?: string; // query _since
+    type?: string; // query _type
     groupId?: string;
+    errorArray?: [{ type: string; url: string }]; // An export job that is completed can optionally have an error array https://hl7.org/Fhir/uv/bulkdata/export/index.html#response---complete-status
+    errorMessage?: string; // Error message for 4xx or 5xx error of an export job https://hl7.org/Fhir/uv/bulkdata/export/index.html#response---error-status-1
 }
 
 export type ExportJobStatus = 'completed' | 'failed' | 'in-progress' | 'canceled' | 'canceling';

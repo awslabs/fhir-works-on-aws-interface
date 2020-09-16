@@ -98,18 +98,6 @@ describe('getRequestInformation', () => {
         const results = getRequestInformation('GET', '');
         expect(results).toEqual({ operation: 'search-system' });
     });
-    test('verb: GET; export system', async () => {
-        const results = getRequestInformation('GET', '/$export');
-        expect(results).toEqual({ operation: 'read', exportType: 'system' });
-    });
-    test('verb: GET; export patient', async () => {
-        const results = getRequestInformation('GET', '/Patient/$export');
-        expect(results).toEqual({ operation: 'read', exportType: 'patient' });
-    });
-    test('verb: GET; export group', async () => {
-        const results = getRequestInformation('GET', '/Group/1/$export');
-        expect(results).toEqual({ operation: 'read', exportType: 'group' });
-    });
     test('verb: POST; search on type', async () => {
         const results = getRequestInformation('POST', '/Patient/_search?name=joe');
         expect(results).toEqual({ operation: 'search-type', resourceType: 'Patient' });
@@ -130,5 +118,58 @@ describe('getRequestInformation', () => {
         expect(() => {
             getRequestInformation('FAKE', '/Patient');
         }).toThrow(new Error('Unable to parse the http verb'));
+    });
+    describe('Export', () => {
+        describe('initiate-export', () => {
+            test('system', async () => {
+                const results = getRequestInformation('GET', '/$export');
+                expect(results).toEqual({
+                    operation: 'read',
+                    bulkDataAuth: {
+                        operation: 'initiate-export',
+                        exportType: 'system',
+                    },
+                });
+            });
+            test('patient', async () => {
+                const results = getRequestInformation('GET', '/Patient/$export');
+                expect(results).toEqual({
+                    operation: 'read',
+                    bulkDataAuth: {
+                        operation: 'initiate-export',
+                        exportType: 'patient',
+                    },
+                });
+            });
+            test('group', async () => {
+                const results = getRequestInformation('GET', '/Group/1/$export');
+                expect(results).toEqual({
+                    operation: 'read',
+                    bulkDataAuth: {
+                        operation: 'initiate-export',
+                        exportType: 'group',
+                    },
+                });
+            });
+        });
+        test('get-status', async () => {
+            const results = getRequestInformation('GET', '/$export/a91b2a31-a964-4919-a220-8be73fb053dd');
+            expect(results).toEqual({
+                operation: 'read',
+                bulkDataAuth: {
+                    operation: 'get-status-export',
+                },
+            });
+        });
+
+        test('cancel-export', async () => {
+            const results = getRequestInformation('DELETE', '/$export/a91b2a31-a964-4919-a220-8be73fb053dd');
+            expect(results).toEqual({
+                operation: 'delete',
+                bulkDataAuth: {
+                    operation: 'cancel-export',
+                },
+            });
+        });
     });
 });

@@ -13,12 +13,29 @@ export interface AuthorizationRequest {
     resourceType?: string;
     id?: string;
     vid?: string;
+    bulkDataAuth?: BulkDataAuth;
+}
+
+export interface BulkDataAuth {
+    operation:
+        | 'initiate-export'
+        | 'initiate-import'
+        | 'get-status-export'
+        | 'get-status-import'
+        | 'cancel-export'
+        | 'cancel-import';
     exportType?: ExportType;
+    importResources?: string[];
 }
 
 export interface AuthorizationBundleRequest {
     accessToken: string;
     requests: BatchReadWriteRequest[];
+}
+
+export interface AccessBulkDataJobRequest {
+    requesterUserId: string;
+    jobOwnerId: string;
 }
 
 export interface Authorization {
@@ -30,6 +47,11 @@ export interface Authorization {
      * Used to authorize Bundle transactions
      */
     isBundleRequestAuthorized(request: AuthorizationBundleRequest): Promise<boolean>;
+
+    /*
+     * Used to determine if a requester can access a Bulk Data Job
+     */
+    isAccessBulkDataJobAllowed(request: AccessBulkDataJobRequest): boolean;
 
     /**
      * Get requester unique userId

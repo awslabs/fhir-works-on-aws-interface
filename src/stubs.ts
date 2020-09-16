@@ -6,7 +6,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Search } from './search';
 import { History } from './history';
-import { Authorization } from './authorization';
+import { AccessBulkDataJobRequest, Authorization } from './authorization';
 import { Persistence } from './persistence';
 import { Bundle } from './bundle';
 import { BulkDataAccess } from './bulkDataAccess';
@@ -52,6 +52,10 @@ export module stubs {
         },
 
         async isBundleRequestAuthorized(request) {
+            return true;
+        },
+
+        isAccessBulkDataJobAllowed(request: AccessBulkDataJobRequest) {
             return true;
         },
 
