@@ -33,6 +33,11 @@ export interface AuthorizationBundleRequest {
     requests: BatchReadWriteRequest[];
 }
 
+export interface AccessBulkDataJobRequest {
+    requesterUserId: string;
+    jobOwnerId: string;
+}
+
 export interface Authorization {
     /**
      * Validates if the requester is authorized to perform the action requested
@@ -46,7 +51,7 @@ export interface Authorization {
     /*
      * Used to determine if a requester can access a Bulk Data Job
      */
-    isAllowedToAccessBulkDataJob(requesterId: string, jobOwnerId: string): boolean;
+    isAccessBulkDataJobAllowed(request: AccessBulkDataJobRequest): boolean;
 
     /**
      * Get requester unique userId
