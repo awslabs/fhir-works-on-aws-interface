@@ -53,6 +53,9 @@ export module stubs {
         async isBundleRequestAuthorized(request) {
             return true;
         },
+        resourceTypesAllowedForOperation(accessToken, operation): Promise<string[]> {
+            return Promise.resolve([]);
+        },
     };
 
     export const persistence: Persistence = {
