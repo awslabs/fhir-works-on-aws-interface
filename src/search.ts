@@ -5,12 +5,12 @@
 
 export interface TypeSearchRequest extends GlobalSearchRequest {
     resourceType: string;
+    allowedResourceTypes: string[];
 }
 
 export interface GlobalSearchRequest {
     queryParams?: any;
     baseUrl: string; // server's URL
-    allowedResourceTypes: string[];
 }
 
 export interface SearchResponse {
