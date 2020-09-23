@@ -19,6 +19,11 @@ export interface AuthorizationBundleRequest {
     requests: BatchReadWriteRequest[];
 }
 
+export interface getResourceTypesAllowedForOperationRequest {
+    accessToken: string;
+    operation: TypeOperation | SystemOperation;
+}
+
 export interface Authorization {
     /**
      * Validates if the requestor is authorized to perform the action requested
@@ -31,8 +36,5 @@ export interface Authorization {
     /**
      * Returns the resourceTypes for which the requester is allowed to perform the given operation.
      */
-    resourceTypesAllowedForOperation(
-        accessToken: string,
-        operation: TypeOperation | SystemOperation,
-    ): Promise<string[]>;
+    getResourceTypesAllowedForOperation(request: getResourceTypesAllowedForOperationRequest): Promise<string[]>;
 }
