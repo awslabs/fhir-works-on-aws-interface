@@ -53,7 +53,7 @@ export module stubs {
         async isBundleRequestAuthorized(request) {
             return true;
         },
-        getResourceTypesAllowedForOperation(request): Promise<string[]> {
+        getAllowedResourceTypesForOperation(request): Promise<string[]> {
             return Promise.resolve([]);
         },
     };
