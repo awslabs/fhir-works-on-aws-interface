@@ -28,4 +28,11 @@ export interface Authorization {
      * Used to authorize Bundle transactions
      */
     isBundleRequestAuthorized(request: AuthorizationBundleRequest): Promise<boolean>;
+    /**
+     * Returns the resourceTypes for which the requester is allowed to perform the given operation.
+     */
+    resourceTypesAllowedForOperation(
+        accessToken: string,
+        operation: TypeOperation | SystemOperation,
+    ): Promise<string[]>;
 }
