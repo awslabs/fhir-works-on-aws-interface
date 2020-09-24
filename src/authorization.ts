@@ -36,5 +36,5 @@ export interface Authorization {
     /**
      * Returns the resourceTypes for which the requester is allowed to perform the given operation.
      */
-    getAllowedResourceTypesForOperation(request: getAllowedResourceTypesForOperationRequest): Promise<string[]>;
+    getAllowedResourceTypesForOperation(request: getAllowedResourceTypesForOperationRequest): string[];
 }
