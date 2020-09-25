@@ -19,7 +19,7 @@ export interface AuthorizationBundleRequest {
     requests: BatchReadWriteRequest[];
 }
 
-export interface getAllowedResourceTypesForOperationRequest {
+export interface AllowedResourceTypesForOperationRequest {
     accessToken: string;
     operation: TypeOperation | SystemOperation;
 }
@@ -36,5 +36,5 @@ export interface Authorization {
     /**
      * Returns the resourceTypes for which the requester is allowed to perform the given operation.
      */
-    getAllowedResourceTypesForOperation(request: getAllowedResourceTypesForOperationRequest): string[];
+    getAllowedResourceTypesForOperation(request: AllowedResourceTypesForOperationRequest): string[];
 }
