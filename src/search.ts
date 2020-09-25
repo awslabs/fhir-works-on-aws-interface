@@ -5,6 +5,7 @@
 
 export interface TypeSearchRequest extends GlobalSearchRequest {
     resourceType: string;
+    allowedResourceTypes: string[];
 }
 
 export interface GlobalSearchRequest {
