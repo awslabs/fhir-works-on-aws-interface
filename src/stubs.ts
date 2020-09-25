@@ -46,14 +46,14 @@ export module stubs {
     };
 
     export const passThroughAuthz: Authorization = {
-        isAuthorized(request): boolean {
+        async isAuthorized(request) {
             return true;
         },
 
         async isBundleRequestAuthorized(request) {
             return true;
         },
-        getAllowedResourceTypesForOperation(request): string[] {
+        async getAllowedResourceTypesForOperation(request) {
             return [
                 'Account',
                 'ActivityDefinition',

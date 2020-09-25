@@ -28,7 +28,7 @@ export interface Authorization {
     /**
      * Validates if the requestor is authorized to perform the action requested
      */
-    isAuthorized(request: AuthorizationRequest): boolean;
+    isAuthorized(request: AuthorizationRequest): Promise<boolean>;
     /**
      * Used to authorize Bundle transactions
      */
@@ -36,5 +36,5 @@ export interface Authorization {
     /**
      * Returns the resourceTypes for which the requester is allowed to perform the given operation.
      */
-    getAllowedResourceTypesForOperation(request: AllowedResourceTypesForOperationRequest): string[];
+    getAllowedResourceTypesForOperation(request: AllowedResourceTypesForOperationRequest): Promise<string[]>;
 }
