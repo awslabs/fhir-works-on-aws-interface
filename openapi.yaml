@@ -900,7 +900,7 @@ components:
           properties:
             id:
               type: string
-              description: 'Unique id of the created resource. Should be in uuidv4 format'
+              description: 'Unique id of the created resource'
       description: A generic response for a successful operation. Response should include the full resource along with a required id field for the resource.
     Reference:
       required:
