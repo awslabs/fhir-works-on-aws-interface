@@ -331,7 +331,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ResourceRequest'
+              $ref: '#/components/schemas/ResourceCreateRequest'
       responses:
         '201':
           description: Created
@@ -417,7 +417,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ResourceRequest'
+              $ref: '#/components/schemas/ResourceUpdateRequest'
       responses:
         '200':
           description: Updated
@@ -506,7 +506,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ResourceRequest'
+              $ref: '#/components/schemas/ResourceUpdateRequest'
       responses:
         '200':
           description: Patched
@@ -897,10 +897,14 @@ components:
       properties:
         resource:
           type: object
+          additionalProperties:
+            type: string
           properties:
             id:
               type: string
               description: 'Unique id of the created resource'
+            resourceType:
+              type: string
       description: A generic response for a successful operation. Response should include the full resource along with a required id field for the resource.
     Reference:
       required:
@@ -934,8 +938,25 @@ components:
           description: Where to find the reference in the Bundle entry
           example: provider.reference
       description: A connection between entries in a Bundle
-    ResourceRequest:
+    ResourceCreateRequest:
+      required:
+        - resourceType
+      type: object
+      additionalProperties:
+        type: string
       properties:
+        resourceType:
+          type: string
+    ResourceUpdateRequest:
+      required:
+        - id
+        - resourceType
+      type: object
+      additionalProperties:
+        type: string
+      properties:
+        id:
+          type: string
         resourceType:
           type: string
     ConditionalResourceRequest:
