@@ -897,8 +897,7 @@ components:
       properties:
         resource:
           type: object
-          additionalProperties:
-            type: string
+          additionalProperties: true
           properties:
             id:
               type: string
@@ -942,8 +941,7 @@ components:
       required:
         - resourceType
       type: object
-      additionalProperties:
-        type: string
+      additionalProperties: true
       properties:
         resourceType:
           type: string
@@ -952,8 +950,7 @@ components:
         - id
         - resourceType
       type: object
-      additionalProperties:
-        type: string
+      additionalProperties: true
       properties:
         id:
           type: string
