@@ -33,6 +33,11 @@ export interface AuthorizationBundleRequest {
     requests: BatchReadWriteRequest[];
 }
 
+export interface AllowedResourceTypesForOperationRequest {
+    accessToken: string;
+    operation: TypeOperation | SystemOperation;
+}
+
 export interface AccessBulkDataJobRequest {
     requesterUserId: string;
     jobOwnerId: string;
@@ -42,7 +47,7 @@ export interface Authorization {
     /**
      * Validates if the requester is authorized to perform the action requested
      */
-    isAuthorized(request: AuthorizationRequest): boolean;
+    isAuthorized(request: AuthorizationRequest): Promise<boolean>;
     /**
      * Used to authorize Bundle transactions
      */
@@ -57,4 +62,8 @@ export interface Authorization {
      * Get requester unique userId
      */
     getRequesterUserId(accessToken: string): string;
+    /**
+     * Returns the resourceTypes for which the requester is allowed to perform the given operation.
+     */
+    getAllowedResourceTypesForOperation(request: AllowedResourceTypesForOperationRequest): Promise<string[]>;
 }
