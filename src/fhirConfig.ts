@@ -3,15 +3,16 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { FhirVersion, TypeOperation, R4Resource, STU3Resource, SystemOperation, ConfigVersion } from './constants';
-import { Persistence } from './persistence';
-import { History } from './history';
-import { Search } from './search';
 import { Authorization } from './authorization';
 import { Bundle } from './bundle';
+import { ConfigVersion, FhirVersion, R4Resource, STU3Resource, SystemOperation, TypeOperation } from './constants';
+import { History } from './history';
+import { Persistence } from './persistence';
+import { Search } from './search';
 
 export interface Strategy {
-    oauthUrl?: string;
+    oauthAuthorizationUrl?: string;
+    oauthTokenUrl?: string;
     // https://www.hl7.org/fhir/codesystem-restful-security-service.html
     service?: 'OAuth' | 'SMART-on-FHIR' | 'NTLM' | 'Basic' | 'Kerberos' | 'Certificates';
 }
