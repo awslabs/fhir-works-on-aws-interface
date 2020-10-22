@@ -15,6 +15,8 @@ export class UnauthorizedError extends Error {
         this.isUnauthorizedError = true;
     }
 }
-export function isUnauthorizedError(err: UnauthorizedError) {
-    return Boolean(err.isUnauthorizedError) || err instanceof UnauthorizedError;
+export function isUnauthorizedError(err: UnauthorizedError | Error): err is UnauthorizedError {
+    return (
+        (err as UnauthorizedError).isUnauthorizedError !== undefined && (err as UnauthorizedError).isUnauthorizedError
+    );
 }
