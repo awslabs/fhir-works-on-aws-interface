@@ -3,6 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
+import { CorsOptions } from 'cors';
 import { FhirVersion, TypeOperation, R4Resource, STU3Resource, SystemOperation, ConfigVersion } from './constants';
 import { Persistence } from './persistence';
 import { History } from './history';
@@ -23,7 +24,7 @@ export interface Auth {
 
 export interface Server {
     url: string;
-    hasCORS?: boolean;
+    corsOptions?: CorsOptions;
 }
 
 export interface Logging {
