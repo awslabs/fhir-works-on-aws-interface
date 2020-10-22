@@ -5,6 +5,8 @@
 
 // eslint-disable-next-line import/prefer-default-export
 export class ResourceNotFoundError extends Error {
+    readonly isResourceNotFoundError: boolean;
+
     readonly resourceType: string;
 
     readonly id: string;
@@ -17,5 +19,12 @@ export class ResourceNotFoundError extends Error {
         this.resourceType = resourceType;
         this.id = id;
         this.name = this.constructor.name;
+        this.isResourceNotFoundError = true;
     }
+}
+export function isResourceNotFoundError(err: ResourceNotFoundError | Error): err is ResourceNotFoundError {
+    return (
+        (err as ResourceNotFoundError).isResourceNotFoundError !== undefined &&
+        (err as ResourceNotFoundError).isResourceNotFoundError
+    );
 }
