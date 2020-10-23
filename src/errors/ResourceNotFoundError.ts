@@ -22,9 +22,9 @@ export class ResourceNotFoundError extends Error {
         this.isResourceNotFoundError = true;
     }
 }
-export function isResourceNotFoundError(err: ResourceNotFoundError | Error): err is ResourceNotFoundError {
+export function isResourceNotFoundError(err: ResourceNotFoundError | unknown): err is ResourceNotFoundError {
     return (
         (err as ResourceNotFoundError).isResourceNotFoundError !== undefined &&
-        (err as ResourceNotFoundError).isResourceNotFoundError
+        (err as ResourceNotFoundError).isResourceNotFoundError === true
     );
 }

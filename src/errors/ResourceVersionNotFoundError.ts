@@ -26,10 +26,10 @@ export class ResourceVersionNotFoundError extends Error {
     }
 }
 export function isResourceVersionNotFoundError(
-    err: ResourceVersionNotFoundError | Error,
+    err: ResourceVersionNotFoundError | unknown,
 ): err is ResourceVersionNotFoundError {
     return (
         (err as ResourceVersionNotFoundError).isResourceVersionNotFoundError !== undefined &&
-        (err as ResourceVersionNotFoundError).isResourceVersionNotFoundError
+        (err as ResourceVersionNotFoundError).isResourceVersionNotFoundError === true
     );
 }
