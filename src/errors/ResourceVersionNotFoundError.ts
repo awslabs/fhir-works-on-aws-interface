@@ -25,11 +25,6 @@ export class ResourceVersionNotFoundError extends Error {
         this.isResourceVersionNotFoundError = true;
     }
 }
-export function isResourceVersionNotFoundError(
-    err: ResourceVersionNotFoundError | unknown,
-): err is ResourceVersionNotFoundError {
-    return (
-        (err as ResourceVersionNotFoundError).isResourceVersionNotFoundError !== undefined &&
-        (err as ResourceVersionNotFoundError).isResourceVersionNotFoundError === true
-    );
+export function isResourceVersionNotFoundError(error: unknown): error is ResourceVersionNotFoundError {
+    return Boolean(error) && (error as ResourceVersionNotFoundError).isResourceVersionNotFoundError === true;
 }

@@ -15,9 +15,6 @@ export class InvalidResourceError extends Error {
         this.name = this.constructor.name;
     }
 }
-export function isInvalidResourceError(err: InvalidResourceError | unknown): err is InvalidResourceError {
-    return (
-        (err as InvalidResourceError).isInvalidResourceError !== undefined &&
-        (err as InvalidResourceError).isInvalidResourceError === true
-    );
+export function isInvalidResourceError(error: unknown): error is InvalidResourceError {
+    return Boolean(error) && (error as InvalidResourceError).isInvalidResourceError === true;
 }
