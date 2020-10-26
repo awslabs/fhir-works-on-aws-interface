@@ -11,7 +11,7 @@ export interface InitiateExportRequest {
 export interface GetExportStatusResponse {
     jobStatus: ExportJobStatus;
     jobOwnerId: string;
-    exportedFileUrls?: [{ type: string; url: string }];
+    exportedFileUrls?: { type: string; url: string }[];
     transactionTime?: string;
     exportType?: ExportType;
     outputFormat?: string; // query _outputFormat, required to allow building of request url, https://hl7.org/Fhir/uv/bulkdata/export/index.html#query-parameters
