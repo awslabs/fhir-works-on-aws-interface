@@ -5,6 +5,8 @@
 
 // eslint-disable-next-line import/prefer-default-export
 export class ResourceVersionNotFoundError extends Error {
+    readonly isResourceVersionNotFoundError: boolean;
+
     readonly resourceType: string;
 
     readonly id: string;
@@ -20,5 +22,9 @@ export class ResourceVersionNotFoundError extends Error {
         this.id = id;
         this.version = version;
         this.name = this.constructor.name;
+        this.isResourceVersionNotFoundError = true;
     }
+}
+export function isResourceVersionNotFoundError(error: unknown): error is ResourceVersionNotFoundError {
+    return Boolean(error) && (error as ResourceVersionNotFoundError).isResourceVersionNotFoundError === true;
 }
