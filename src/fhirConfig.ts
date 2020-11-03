@@ -23,7 +23,6 @@ export interface Auth {
 
 export interface Server {
     url: string;
-    hasCORS?: boolean;
 }
 
 export interface Logging {
