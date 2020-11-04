@@ -17,4 +17,5 @@ export * from './utilities';
 export * from './errors/InvalidResourceError';
 export * from './errors/ResourceNotFoundError';
 export * from './errors/ResourceVersionNotFoundError';
+export * from './errors/UnauthorizedError';
 export { stubs } from './stubs';

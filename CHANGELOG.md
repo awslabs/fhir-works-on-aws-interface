@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.0-beta.1] - 2020-11-04
+
+- feat: export UnauthorizedError to be usable
+
 ## [3.0.0-beta.0] - 2020-11-04
 
 - feat: Add required methods for SMART on FHIR interactions
