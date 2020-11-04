@@ -46,13 +46,15 @@ export module stubs {
     };
 
     export const passThroughAuthz: Authorization = {
-        async isAuthorized(request) {
-            return true;
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        async isAuthorized(request) {},
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        async isBundleRequestAuthorized(request) {},
+        async authorizeAndFilterReadResponse(request) {
+            return request.readResponse;
         },
-
-        async isBundleRequestAuthorized(request) {
-            return true;
-        },
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        async isWriteRequestAuthorized(request) {},
         async getAllowedResourceTypesForOperation(request) {
             return [
                 'Account',
