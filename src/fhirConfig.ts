@@ -11,11 +11,11 @@ import { Persistence } from './persistence';
 import { Search } from './search';
 
 export interface OAuthStrategy {
-    oauthAuthorizationUrl: string;
-    oauthTokenUrl: string;
-    oauthPublicKeyUrl?: string;
-    oauthTokenIntrospectionUrl?: string;
-    oauthUserInfoUrl?: string;
+    authorizationUrl: string;
+    tokenUrl: string;
+    publicKeyUrl?: string;
+    tokenIntrospectionUrl?: string;
+    userInfoUrl?: string;
 }
 
 export interface Strategy {
