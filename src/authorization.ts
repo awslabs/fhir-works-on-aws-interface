@@ -24,17 +24,41 @@ export interface AllowedResourceTypesForOperationRequest {
     operation: TypeOperation | SystemOperation;
 }
 
+export interface ReadResponseAuthorizedRequest {
+    accessToken: string;
+    operation: TypeOperation | SystemOperation;
+    readResponse: any;
+}
+export interface WriteRequestAuthorizedRequest {
+    accessToken: string;
+    operation: TypeOperation;
+    resourceBody: any;
+}
+
 export interface Authorization {
     /**
      * Validates if the requestor is authorized to perform the action requested
+     * @throws UnauthorizedError
      */
-    isAuthorized(request: AuthorizationRequest): Promise<boolean>;
+    isAuthorized(request: AuthorizationRequest): Promise<void>;
     /**
      * Used to authorize Bundle transactions
+     * @throws UnauthorizedError
      */
-    isBundleRequestAuthorized(request: AuthorizationBundleRequest): Promise<boolean>;
+    isBundleRequestAuthorized(request: AuthorizationBundleRequest): Promise<void>;
     /**
-     * Returns the resourceTypes for which the requester is allowed to perform the given operation.
+     * @returns resourceTypes for which the requester is allowed to perform the requested operation.
      */
     getAllowedResourceTypesForOperation(request: AllowedResourceTypesForOperationRequest): Promise<string[]>;
+    /**
+     * Filters and validates the read response per the specific user
+     * @returns a potentially filtered readResponse
+     * @throws UnauthorizedError
+     */
+    authorizeAndFilterReadResponse(request: ReadResponseAuthorizedRequest): Promise<any>;
+    /**
+     * Examines the writes request body to authorize if user is allowed to perform the action requested
+     * @throws UnauthorizedError
+     */
+    isWriteRequestAuthorized(request: WriteRequestAuthorizedRequest): Promise<void>;
 }
