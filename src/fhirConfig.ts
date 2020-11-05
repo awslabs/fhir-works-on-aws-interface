@@ -10,17 +10,23 @@ import { History } from './history';
 import { Persistence } from './persistence';
 import { Search } from './search';
 
+/**
+ * http://www.hl7.org/fhir/smart-app-launch/conformance/index.html#using-cs
+ */
 export interface OAuthStrategy {
     authorizationUrl: string;
     tokenUrl: string;
-    publicKeyUrl?: string;
-    tokenIntrospectionUrl?: string;
-    userInfoUrl?: string;
+    introspectUrl?: string;
+    registerUrl?: string;
+    manageUrl?: string;
+    revokeUrl?: string;
 }
 
 export interface Strategy {
     oauth?: OAuthStrategy;
-    // https://www.hl7.org/fhir/codesystem-restful-security-service.html
+    /**
+     * https://www.hl7.org/fhir/codesystem-restful-security-service.html
+     */
     service?: 'OAuth' | 'SMART-on-FHIR' | 'NTLM' | 'Basic' | 'Kerberos' | 'Certificates';
 }
 
