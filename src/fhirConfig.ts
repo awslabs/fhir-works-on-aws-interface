@@ -10,12 +10,18 @@ import { History } from './history';
 import { Persistence } from './persistence';
 import { Search } from './search';
 
+/**
+ * http://www.hl7.org/fhir/smart-app-launch/conformance/index.html#using-cs
+ */
 export interface OAuthStrategy {
     authorizationUrl: string;
     tokenUrl: string;
-    publicKeyUrl?: string;
-    tokenIntrospectionUrl?: string;
+    introspectUrl?: string;
+    registerUrl?: string;
+    manageUrl?: string;
+    revokeUrl?: string;
     userInfoUrl?: string;
+    publicKeyUrl?: string;
 }
 
 export interface Strategy {
