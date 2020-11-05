@@ -20,13 +20,13 @@ export interface OAuthStrategy {
     registerUrl?: string;
     manageUrl?: string;
     revokeUrl?: string;
-    userInfoUrl?: string;
-    publicKeyUrl?: string;
 }
 
 export interface Strategy {
     oauth?: OAuthStrategy;
-    // https://www.hl7.org/fhir/codesystem-restful-security-service.html
+    /**
+     * https://www.hl7.org/fhir/codesystem-restful-security-service.html
+     */
     service?: 'OAuth' | 'SMART-on-FHIR' | 'NTLM' | 'Basic' | 'Kerberos' | 'Certificates';
 }
 
