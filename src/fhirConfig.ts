@@ -3,17 +3,31 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { FhirVersion, TypeOperation, R4Resource, STU3Resource, SystemOperation, ConfigVersion } from './constants';
-import { Persistence } from './persistence';
-import { History } from './history';
-import { Search } from './search';
 import { Authorization } from './authorization';
 import { Bundle } from './bundle';
 import { BulkDataAccess } from './bulkDataAccess';
+import { ConfigVersion, FhirVersion, R4Resource, STU3Resource, SystemOperation, TypeOperation } from './constants';
+import { History } from './history';
+import { Persistence } from './persistence';
+import { Search } from './search';
+
+/**
+ * http://www.hl7.org/fhir/smart-app-launch/conformance/index.html#using-cs
+ */
+export interface OAuthStrategy {
+    authorizationUrl: string;
+    tokenUrl: string;
+    introspectUrl?: string;
+    registerUrl?: string;
+    manageUrl?: string;
+    revokeUrl?: string;
+}
 
 export interface Strategy {
-    oauthUrl?: string;
-    // https://www.hl7.org/fhir/codesystem-restful-security-service.html
+    oauth?: OAuthStrategy;
+    /**
+     * https://www.hl7.org/fhir/codesystem-restful-security-service.html
+     */
     service?: 'OAuth' | 'SMART-on-FHIR' | 'NTLM' | 'Basic' | 'Kerberos' | 'Certificates';
 }
 
