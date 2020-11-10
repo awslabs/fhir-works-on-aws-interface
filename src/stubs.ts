@@ -57,9 +57,8 @@ export module stubs {
         // eslint-disable-next-line @typescript-eslint/no-empty-function
         async isWriteRequestAuthorized(request) {},
 
-        isAccessBulkDataJobAllowed(request: AccessBulkDataJobRequest) {
-            return true;
-        },
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        isAccessBulkDataJobAllowed(request: AccessBulkDataJobRequest) {},
 
         getRequesterUserId(accessToken: string): string {
             return 'random-userId';

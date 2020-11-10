@@ -70,7 +70,7 @@ export interface Authorization {
     /*
      * Used to determine if a requester can access a Bulk Data Job
      */
-    isAccessBulkDataJobAllowed(request: AccessBulkDataJobRequest): Promise<void>;
+    isAccessBulkDataJobAllowed(request: AccessBulkDataJobRequest): void;
 
     /**
      * Get requester unique userId
