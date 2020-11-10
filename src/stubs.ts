@@ -54,7 +54,7 @@ export module stubs {
         async authorizeAndFilterReadResponse(request) {
             return request.readResponse;
         },
-         // eslint-disable-next-line @typescript-eslint/no-empty-function
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         async isWriteRequestAuthorized(request) {},
 
         isAccessBulkDataJobAllowed(request: AccessBulkDataJobRequest) {
