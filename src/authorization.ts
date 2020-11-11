@@ -5,6 +5,7 @@
 
 import { BatchReadWriteRequest } from './bundle';
 import { TypeOperation, SystemOperation } from './constants';
+import { ExportType } from './bulkDataAccess';
 
 export interface AuthorizationRequest {
     accessToken: string;
@@ -12,6 +13,19 @@ export interface AuthorizationRequest {
     resourceType?: string;
     id?: string;
     vid?: string;
+    bulkDataAuth?: BulkDataAuth;
+}
+
+export interface BulkDataAuth {
+    operation:
+        | 'initiate-export'
+        | 'initiate-import'
+        | 'get-status-export'
+        | 'get-status-import'
+        | 'cancel-export'
+        | 'cancel-import';
+    exportType?: ExportType;
+    importResources?: string[];
 }
 
 export interface AuthorizationBundleRequest {
@@ -24,11 +38,17 @@ export interface AllowedResourceTypesForOperationRequest {
     operation: TypeOperation | SystemOperation;
 }
 
+export interface AccessBulkDataJobRequest {
+    requesterUserId: string;
+    jobOwnerId: string;
+}
+
 export interface ReadResponseAuthorizedRequest {
     accessToken: string;
     operation: TypeOperation | SystemOperation;
     readResponse: any;
 }
+
 export interface WriteRequestAuthorizedRequest {
     accessToken: string;
     operation: TypeOperation;
@@ -37,7 +57,7 @@ export interface WriteRequestAuthorizedRequest {
 
 export interface Authorization {
     /**
-     * Validates if the requestor is authorized to perform the action requested
+     * Validates if the requester is authorized to perform the action requested
      * @throws UnauthorizedError
      */
     isAuthorized(request: AuthorizationRequest): Promise<void>;
@@ -46,6 +66,16 @@ export interface Authorization {
      * @throws UnauthorizedError
      */
     isBundleRequestAuthorized(request: AuthorizationBundleRequest): Promise<void>;
+
+    /*
+     * Used to determine if a requester can access a Bulk Data Job
+     */
+    isAccessBulkDataJobAllowed(request: AccessBulkDataJobRequest): void;
+
+    /**
+     * Get requester unique userId
+     */
+    getRequesterUserId(accessToken: string): string;
     /**
      * @returns resourceTypes for which the requester is allowed to perform the requested operation.
      */

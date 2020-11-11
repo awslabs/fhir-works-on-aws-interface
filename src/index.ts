@@ -4,6 +4,7 @@
  */
 
 export * from './authorization';
+export * from './bulkDataAccess';
 export * from './bundle';
 export * from './capabilities';
 export * from './constants';
@@ -18,4 +19,5 @@ export * from './errors/InvalidResourceError';
 export * from './errors/ResourceNotFoundError';
 export * from './errors/ResourceVersionNotFoundError';
 export * from './errors/UnauthorizedError';
+export * from './errors/TooManyConcurrentExportRequestsError';
 export { stubs } from './stubs';

@@ -6,9 +6,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Search } from './search';
 import { History } from './history';
-import { Authorization } from './authorization';
+import { AccessBulkDataJobRequest, Authorization } from './authorization';
 import { Persistence } from './persistence';
 import { Bundle } from './bundle';
+import { BulkDataAccess } from './bulkDataAccess';
 
 export module stubs {
     export const bundle: Bundle = {
@@ -55,6 +56,13 @@ export module stubs {
         },
         // eslint-disable-next-line @typescript-eslint/no-empty-function
         async isWriteRequestAuthorized(request) {},
+
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        isAccessBulkDataJobAllowed(request: AccessBulkDataJobRequest) {},
+
+        getRequesterUserId(accessToken: string): string {
+            return 'random-userId';
+        },
         async getAllowedResourceTypesForOperation(request) {
             return [
                 'Account',
@@ -246,6 +254,20 @@ export module stubs {
 
         conditionalDeleteResource(request, queryParams) {
             throw new Error('Method not implemented.');
+        },
+    };
+
+    export const bulkDataAccess: BulkDataAccess = {
+        initiateExport(request) {
+            throw new Error('Method not implemented.');
+        },
+
+        cancelExport(jobId) {
+            throw new Error('Method not implemented');
+        },
+
+        getExportStatus(jobId) {
+            throw new Error('Method not implemented');
         },
     };
 }

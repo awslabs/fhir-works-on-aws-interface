@@ -5,6 +5,7 @@
 
 import { Authorization } from './authorization';
 import { Bundle } from './bundle';
+import { BulkDataAccess } from './bulkDataAccess';
 import { ConfigVersion, FhirVersion, R4Resource, STU3Resource, SystemOperation, TypeOperation } from './constants';
 import { History } from './history';
 import { Persistence } from './persistence';
@@ -66,6 +67,7 @@ export interface Profile {
     systemSearch: Search;
     systemHistory: History;
     bundle: Bundle;
+    bulkDataAccess?: BulkDataAccess;
     genericResource?: GenericResource;
     resources?: Resources;
 }
