@@ -7,7 +7,7 @@ import { BatchReadWriteRequest } from './bundle';
 import { TypeOperation, SystemOperation } from './constants';
 import { ExportType } from './bulkDataAccess';
 
-export interface AuthorizationRequest {
+export interface VerifyAccessTokenRequest {
     accessToken: string;
     operation: TypeOperation | SystemOperation;
     resourceType?: string;
@@ -29,53 +29,49 @@ export interface BulkDataAuth {
 }
 
 export interface AuthorizationBundleRequest {
-    accessToken: string;
+    userIdentity: object;
     requests: BatchReadWriteRequest[];
 }
 
 export interface AllowedResourceTypesForOperationRequest {
-    accessToken: string;
+    userIdentity: object;
     operation: TypeOperation | SystemOperation;
 }
 
 export interface AccessBulkDataJobRequest {
-    requesterUserId: string;
+    userIdentity: object;
     jobOwnerId: string;
 }
 
 export interface ReadResponseAuthorizedRequest {
-    accessToken: string;
+    userIdentity: object;
     operation: TypeOperation | SystemOperation;
     readResponse: any;
 }
 
 export interface WriteRequestAuthorizedRequest {
-    accessToken: string;
+    userIdentity: object;
     operation: TypeOperation;
     resourceBody: any;
 }
 
 export interface Authorization {
     /**
-     * Validates if the requester is authorized to perform the action requested
+     * Validates the access_tokne and returns the userIdentity
+     * @returns decoded access_token; effectively the userIdentity
      * @throws UnauthorizedError
      */
-    isAuthorized(request: AuthorizationRequest): Promise<void>;
+    verifyAccessToken(request: VerifyAccessTokenRequest): Promise<object>;
     /**
      * Used to authorize Bundle transactions
      * @throws UnauthorizedError
      */
     isBundleRequestAuthorized(request: AuthorizationBundleRequest): Promise<void>;
-
     /*
      * Used to determine if a requester can access a Bulk Data Job
+     * @throws UnauthorizedError
      */
-    isAccessBulkDataJobAllowed(request: AccessBulkDataJobRequest): void;
-
-    /**
-     * Get requester unique userId
-     */
-    getRequesterUserId(accessToken: string): string;
+    isAccessBulkDataJobAllowed(request: AccessBulkDataJobRequest): Promise<void>;
     /**
      * @returns resourceTypes for which the requester is allowed to perform the requested operation.
      */
