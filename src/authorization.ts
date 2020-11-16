@@ -57,7 +57,7 @@ export interface WriteRequestAuthorizedRequest {
 
 export interface Authorization {
     /**
-     * Validates the access_tokne and returns the userIdentity
+     * Validates the access token and returns the userIdentity
      * @returns decoded access_token; effectively the userIdentity
      * @throws UnauthorizedError
      */
