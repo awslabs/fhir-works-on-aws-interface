@@ -4,7 +4,7 @@
  */
 
 import { BatchReadWriteRequest } from './bundle';
-import { TypeOperation, SystemOperation } from './constants';
+import { TypeOperation, SystemOperation, KeyValueMap } from './constants';
 import { ExportType } from './bulkDataAccess';
 
 export interface VerifyAccessTokenRequest {
@@ -29,28 +29,28 @@ export interface BulkDataAuth {
 }
 
 export interface AuthorizationBundleRequest {
-    userIdentity: object;
+    userIdentity: KeyValueMap;
     requests: BatchReadWriteRequest[];
 }
 
 export interface AllowedResourceTypesForOperationRequest {
-    userIdentity: object;
+    userIdentity: KeyValueMap;
     operation: TypeOperation | SystemOperation;
 }
 
 export interface AccessBulkDataJobRequest {
-    userIdentity: object;
+    userIdentity: KeyValueMap;
     jobOwnerId: string;
 }
 
 export interface ReadResponseAuthorizedRequest {
-    userIdentity: object;
+    userIdentity: KeyValueMap;
     operation: TypeOperation | SystemOperation;
     readResponse: any;
 }
 
 export interface WriteRequestAuthorizedRequest {
-    userIdentity: object;
+    userIdentity: KeyValueMap;
     operation: TypeOperation;
     resourceBody: any;
 }
@@ -61,7 +61,7 @@ export interface Authorization {
      * @returns decoded access token; effectively the userIdentity
      * @throws UnauthorizedError
      */
-    verifyAccessToken(request: VerifyAccessTokenRequest): Promise<object>;
+    verifyAccessToken(request: VerifyAccessTokenRequest): Promise<KeyValueMap>;
     /**
      * Used to authorize Bundle transactions
      * @throws UnauthorizedError
