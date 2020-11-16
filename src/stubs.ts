@@ -48,7 +48,9 @@ export module stubs {
 
     export const passThroughAuthz: Authorization = {
         // eslint-disable-next-line @typescript-eslint/no-empty-function
-        async isAuthorized(request) {},
+        async verifyAccessToken(request) {
+            return {};
+        },
         // eslint-disable-next-line @typescript-eslint/no-empty-function
         async isBundleRequestAuthorized(request) {},
         async authorizeAndFilterReadResponse(request) {
@@ -56,13 +58,8 @@ export module stubs {
         },
         // eslint-disable-next-line @typescript-eslint/no-empty-function
         async isWriteRequestAuthorized(request) {},
-
         // eslint-disable-next-line @typescript-eslint/no-empty-function
-        isAccessBulkDataJobAllowed(request: AccessBulkDataJobRequest) {},
-
-        getRequesterUserId(accessToken: string): string {
-            return 'random-userId';
-        },
+        async isAccessBulkDataJobAllowed(request: AccessBulkDataJobRequest) {},
         async getAllowedResourceTypesForOperation(request) {
             return [
                 'Account',
