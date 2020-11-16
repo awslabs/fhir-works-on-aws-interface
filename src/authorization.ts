@@ -58,7 +58,7 @@ export interface WriteRequestAuthorizedRequest {
 export interface Authorization {
     /**
      * Validates the access token and returns the userIdentity
-     * @returns decoded access_token; effectively the userIdentity
+     * @returns decoded access token; effectively the userIdentity
      * @throws UnauthorizedError
      */
     verifyAccessToken(request: VerifyAccessTokenRequest): Promise<object>;
