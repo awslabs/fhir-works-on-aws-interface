@@ -23,8 +23,18 @@ export interface OAuthStrategy {
     revokeUrl?: string;
 }
 
+export interface SmartStrategy {
+    capabilities: string[];
+    scopesSupported?: string[];
+    responseTypesSupported?: string[];
+    tokenEndpointAuthMethods?: tokenEndpointAuthMethod[];
+}
+
+export type tokenEndpointAuthMethod = 'client_secret_basic' | 'client_secret_post';
+
 export interface Strategy {
     oauth?: OAuthStrategy;
+    smart?: SmartStrategy;
     /**
      * https://www.hl7.org/fhir/codesystem-restful-security-service.html
      */
