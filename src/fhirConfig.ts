@@ -23,11 +23,14 @@ export interface OAuthStrategy {
     revokeUrl?: string;
 }
 
-export interface SmartStrategy {
+/**
+ * http://www.hl7.org/fhir/smart-app-launch/conformance/index.html#using-well-known
+ */
+export interface SmartStrategy extends OAuthStrategy {
     capabilities: string[];
     scopesSupported?: string[];
     responseTypesSupported?: string[];
-    tokenEndpointAuthMethods?: tokenEndpointAuthMethod[];
+    tokenEndpointAuthMethodsSupported?: tokenEndpointAuthMethod[];
 }
 
 export type tokenEndpointAuthMethod = 'client_secret_basic' | 'client_secret_post';
