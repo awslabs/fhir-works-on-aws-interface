@@ -15,16 +15,29 @@ import { Search } from './search';
  * http://www.hl7.org/fhir/smart-app-launch/conformance/index.html#using-cs
  */
 export interface OAuthStrategy {
-    authorizationUrl: string;
-    tokenUrl: string;
-    introspectUrl?: string;
-    registerUrl?: string;
-    manageUrl?: string;
-    revokeUrl?: string;
+    authorizationEndpoint: string;
+    tokenEndpoint: string;
+    introspectionEndpoint?: string;
+    revocationEndpoint?: string;
+    registrationEndpoint?: string;
+    managementEndpoint?: string;
 }
+
+/**
+ * http://www.hl7.org/fhir/smart-app-launch/conformance/index.html#using-well-known
+ */
+export interface SmartStrategy extends OAuthStrategy {
+    capabilities: string[];
+    scopesSupported?: string[];
+    responseTypesSupported?: string[];
+    tokenEndpointAuthMethodsSupported?: tokenEndpointAuthMethod[];
+}
+
+export type tokenEndpointAuthMethod = 'client_secret_basic' | 'client_secret_post';
 
 export interface Strategy {
     oauth?: OAuthStrategy;
+    smart?: SmartStrategy;
     /**
      * https://www.hl7.org/fhir/codesystem-restful-security-service.html
      */
