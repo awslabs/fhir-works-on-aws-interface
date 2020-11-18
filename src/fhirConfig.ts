@@ -15,12 +15,12 @@ import { Search } from './search';
  * http://www.hl7.org/fhir/smart-app-launch/conformance/index.html#using-cs
  */
 export interface OAuthStrategy {
-    authorizationUrl: string;
-    tokenUrl: string;
-    introspectUrl?: string;
-    registerUrl?: string;
-    manageUrl?: string;
-    revokeUrl?: string;
+    authorizationEndpoint: string;
+    tokenEndpoint: string;
+    introspectionEndpoint?: string;
+    revocationEndpoint?: string;
+    registrationEndpoint?: string;
+    managementEndpoint?: string;
 }
 
 /**
