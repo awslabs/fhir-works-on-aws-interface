@@ -27,7 +27,10 @@ export interface OAuthStrategy {
  * http://www.hl7.org/fhir/smart-app-launch/conformance/index.html#using-well-known
  */
 export interface SmartStrategy extends OAuthStrategy {
-    // https://www.hl7.org/fhir/valueset-smart-capabilities.html
+    /**
+     * array of strings representing SMART capabilities
+     * https://www.hl7.org/fhir/valueset-smart-capabilities.html
+     */
     capabilities: (
         | 'launch-ehr'
         | 'launch-standalone'
@@ -45,8 +48,17 @@ export interface SmartStrategy extends OAuthStrategy {
         | 'permission-user'
         | string
     )[];
+    /**
+     * array of scopes a client may request
+     */
     scopesSupported?: string[];
+    /**
+     * array of OAuth2 response_type values that are supported
+     */
     responseTypesSupported?: string[];
+    /**
+     * array of client authentication methods supported by the token endpoint.
+     */
     tokenEndpointAuthMethodsSupported?: tokenEndpointAuthMethod[];
 }
 
