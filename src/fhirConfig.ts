@@ -27,17 +27,45 @@ export interface OAuthStrategy {
  * http://www.hl7.org/fhir/smart-app-launch/conformance/index.html#using-well-known
  */
 export interface SmartStrategy extends OAuthStrategy {
-    capabilities: string[];
+    /**
+     * array of strings representing SMART capabilities
+     * https://www.hl7.org/fhir/valueset-smart-capabilities.html
+     */
+    capabilities: (
+        | 'launch-ehr'
+        | 'launch-standalone'
+        | 'client-public'
+        | 'client-confidential-symmetric'
+        | 'sso-openid-connect'
+        | 'context-passthrough-banner'
+        | 'context-passthrough-style'
+        | 'context-ehr-patient'
+        | 'context-ehr-encounter'
+        | 'context-standalone-patient'
+        | 'context-standalone-encounter'
+        | 'permission-offline'
+        | 'permission-patient'
+        | 'permission-user'
+        | string
+    )[];
+    /**
+     * array of scopes a client may request
+     */
     scopesSupported?: string[];
+    /**
+     * array of OAuth2 response_type values that are supported
+     */
     responseTypesSupported?: string[];
+    /**
+     * array of client authentication methods supported by the token endpoint.
+     */
     tokenEndpointAuthMethodsSupported?: tokenEndpointAuthMethod[];
 }
 
 export type tokenEndpointAuthMethod = 'client_secret_basic' | 'client_secret_post';
 
 export interface Strategy {
-    oauth?: OAuthStrategy;
-    smart?: SmartStrategy;
+    oauthPolicy?: OAuthStrategy | SmartStrategy;
     /**
      * https://www.hl7.org/fhir/codesystem-restful-security-service.html
      */
