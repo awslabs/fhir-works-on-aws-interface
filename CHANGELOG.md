@@ -10,7 +10,8 @@ All notable changes to this project will be documented in this file.
 
 ### Updated
 - Authorization interfaces to use `userIdentity` instead of `accessToken`
-
+- isAuthorized renamed to verifyAccessToken
+- getRequesterUserId method removed
 ## [3.0.0] - 2020-11-11
 
 ### Added
