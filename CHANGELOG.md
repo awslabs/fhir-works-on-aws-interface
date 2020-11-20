@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.0.0] - 2020-11-20
+### Added
+- `SmartStrategy` for passing in SMART Auth configurations
+- `SmartAuthorization` for class implementing SMART Auth 
+
+### Updated
+- Authorization interfaces to use `userIdentity` instead of `accessToken`
+
 ## [3.0.0] - 2020-11-11
 
 ### Added
