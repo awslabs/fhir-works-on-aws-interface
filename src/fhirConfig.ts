@@ -113,9 +113,19 @@ export interface Profile {
     resources?: Resources;
 }
 
-export interface FhirConfig {
+export interface ProductInfo {
     orgName: string;
+    productVersion?: string;
+    productName?: string;
+    productSlug?: string;
+    productDescription?: string;
+    productPurpose?: string;
+    copyright?: string;
+}
+
+export interface FhirConfig {
     configVersion: ConfigVersion;
+    productInfo: ProductInfo;
     auth: Auth;
     server: Server;
     logging: Logging;
