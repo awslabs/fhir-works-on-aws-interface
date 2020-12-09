@@ -112,7 +112,9 @@ export interface Profile {
     genericResource?: GenericResource;
     resources?: Resources;
 }
-
+/**
+   * Used in the generation of the CapabilityStatement
+   */
 export interface ProductInfo {
     orgName: string;
     productVersion?: string;
