@@ -119,7 +119,10 @@ export interface ProductInfo {
     orgName: string;
     productVersion?: string;
     productName?: string;
-    productSlug?: string;
+/**
+  * Name should be usable as an identifier for the module by machine processing applications such as code generation.
+  */
+    productMachineName?: string;
     productDescription?: string;
     productPurpose?: string;
     copyright?: string;
