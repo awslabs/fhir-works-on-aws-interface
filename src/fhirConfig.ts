@@ -112,10 +112,50 @@ export interface Profile {
     genericResource?: GenericResource;
     resources?: Resources;
 }
+/**
+ * Used in the generation of the CapabilityStatement
+ */
+export interface ProductInfo {
+    /**
+     * Name of the organization publishing and operating the solution
+     * See: https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.publisher
+     */
+    orgName: string;
+    /**
+     * An identifier that is used to identify this version of the capability statement.
+     * See: https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.version
+     */
+    productVersion?: string;
+    /**
+     * A short, descriptive, user-friendly title for the capability statement.
+     * See: https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.title
+     */
+    productTitle?: string;
+    /**
+     * A description of the capability statement from a consumer's perspective.
+     * See: https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.description
+     */
+    productDescription?: string;
+    /**
+     * An identifier for the module to be used by machine processing applications such as code generation.
+     * See: https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.name
+     */
+    productMachineName?: string;
+    /**
+     * An explanation of the need and design of the capability statement.
+     * See: https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.purpose
+     */
+    productPurpose?: string;
+    /**
+     * A copyright statement relating to the capability statement.
+     * See: https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.copyright
+     */
+    copyright?: string;
+}
 
 export interface FhirConfig {
-    orgName: string;
     configVersion: ConfigVersion;
+    productInfo: ProductInfo;
     auth: Auth;
     server: Server;
     logging: Logging;
