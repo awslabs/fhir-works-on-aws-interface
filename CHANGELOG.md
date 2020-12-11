@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.0.0] - 2020-12-11
+
+### Added
+- `ProductInfo` interface to collect product and business information about the FHIR server
+
 ## [4.0.0] - 2020-11-20
 
 ### Added
