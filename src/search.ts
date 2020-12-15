@@ -9,8 +9,9 @@ export interface TypeSearchRequest extends GlobalSearchRequest {
 }
 
 export interface GlobalSearchRequest {
-    queryParams?: any;
     baseUrl: string; // server's URL
+    queryParams?: any;
+    searchFilters?: SearchFilter[];
 }
 
 export interface SearchResponse {
@@ -34,6 +35,12 @@ export interface SearchResult {
     previousResultUrl?: string;
     nextResultUrl?: string;
     lastResultUrl?: string;
+}
+
+export interface SearchFilter {
+    filterKey: string;
+    filterValue: string;
+    filterOperator: '~' | '==' | '!=' | '>' | '<' | '>=' | '<=';
 }
 
 export interface Search {

@@ -3,7 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { SearchEntry } from './search';
+import { SearchEntry, SearchFilter } from './search';
 
 export interface InstanceHistoryRequest extends TypeHistoryRequest {
     id: string;
@@ -14,8 +14,9 @@ export interface TypeHistoryRequest extends GlobalHistoryRequest {
 }
 
 export interface GlobalHistoryRequest {
-    queryParams?: any;
     baseUrl: string; // server's URL
+    queryParams?: any;
+    searchFilters?: SearchFilter[];
 }
 
 export interface HistoryResponse {
