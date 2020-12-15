@@ -58,7 +58,7 @@ export interface WriteRequestAuthorizedRequest {
 
 export interface GetSearchFilterBasedOnIdentity {
     userIdentity: KeyValueMap;
-    operation: 'search-type' | 'search-system'; // Do we need this field?
+    operation: 'search-type' | 'search-system';
 }
 
 export interface Authorization {
