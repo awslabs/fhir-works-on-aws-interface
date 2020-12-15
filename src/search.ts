@@ -36,6 +36,13 @@ export interface SearchResult {
     lastResultUrl?: string;
 }
 
+export interface SearchFilter {
+    key: string;
+    value: string[];
+    operator: '==' | '!=' | '>' | '<' | '>=' | '<=';
+    logicalOperator?: 'AND' | 'OR';
+}
+
 export interface Search {
     /**
      * Searches a specific Resource Type based on some filter criteria
