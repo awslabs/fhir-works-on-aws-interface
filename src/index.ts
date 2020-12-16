@@ -20,4 +20,5 @@ export * from './errors/ResourceNotFoundError';
 export * from './errors/ResourceVersionNotFoundError';
 export * from './errors/UnauthorizedError';
 export * from './errors/TooManyConcurrentExportRequestsError';
+export * from './errors/InvalidSearchParameterError';
 export { stubs } from './stubs';
