@@ -6,7 +6,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Search } from './search';
 import { History } from './history';
-import { AccessBulkDataJobRequest, Authorization, GetSearchFilterBasedOnIdentity } from './authorization';
+import { AccessBulkDataJobRequest, Authorization, GetSearchFilterBasedOnIdentityRequest } from './authorization';
 import { Persistence } from './persistence';
 import { Bundle } from './bundle';
 import { BulkDataAccess } from './bulkDataAccess';
@@ -60,7 +60,7 @@ export module stubs {
         async isWriteRequestAuthorized(request) {},
         // eslint-disable-next-line @typescript-eslint/no-empty-function
         async isAccessBulkDataJobAllowed(request: AccessBulkDataJobRequest) {},
-        async getSearchFilterBasedOnIdentity(request: GetSearchFilterBasedOnIdentity) {
+        async getSearchFilterBasedOnIdentity(request: GetSearchFilterBasedOnIdentityRequest) {
             return [];
         },
         async getAllowedResourceTypesForOperation(request) {

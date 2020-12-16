@@ -56,7 +56,7 @@ export interface WriteRequestAuthorizedRequest {
     resourceBody: any;
 }
 
-export interface GetSearchFilterBasedOnIdentity {
+export interface GetSearchFilterBasedOnIdentityRequest {
     userIdentity: KeyValueMap;
     operation: 'search-type' | 'search-system';
 }
@@ -98,5 +98,5 @@ export interface Authorization {
      * Returns search filters to prevent doing expensive overly permissive search
      * @returns Search filter
      */
-    getSearchFilterBasedOnIdentity(request: GetSearchFilterBasedOnIdentity): Promise<SearchFilter[]>;
+    getSearchFilterBasedOnIdentity(request: GetSearchFilterBasedOnIdentityRequest): Promise<SearchFilter[]>;
 }
