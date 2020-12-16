@@ -7,7 +7,7 @@
 export class InvalidSearchParameterError extends Error {
     readonly isInvalidSearchParameterError: boolean;
 
-    constructor(message = 'Invalid Resource') {
+    constructor(message: string) {
         // Node Error class requires passing a string message to the parent class
         super(message);
         Object.setPrototypeOf(this, InvalidSearchParameterError.prototype);
