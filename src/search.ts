@@ -40,7 +40,7 @@ export interface SearchResult {
 export interface SearchFilter {
     key: string;
     value: string[];
-    comparisonOperator: '~' | '==' | '!=' | '>' | '<' | '>=' | '<=';
+    comparisonOperator: '==' | '!=' | '>' | '<' | '>=' | '<=';
     logicalOperator: 'AND' | 'OR';
 }
 
