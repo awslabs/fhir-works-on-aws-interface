@@ -38,9 +38,10 @@ export interface SearchResult {
 }
 
 export interface SearchFilter {
-    filterKey: string;
-    filterValue: string;
-    filterOperator: '~' | '==' | '!=' | '>' | '<' | '>=' | '<=';
+    key: string;
+    value: string[];
+    comparisonOperator: '~' | '==' | '!=' | '>' | '<' | '>=' | '<=';
+    logicalOperator: 'AND' | 'OR';
 }
 
 export interface Search {
