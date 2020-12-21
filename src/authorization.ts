@@ -6,6 +6,7 @@
 import { BatchReadWriteRequest } from './bundle';
 import { TypeOperation, SystemOperation, KeyValueMap } from './constants';
 import { ExportType } from './bulkDataAccess';
+import { SearchFilter } from './search';
 
 export interface VerifyAccessTokenRequest {
     accessToken: string;
@@ -55,6 +56,11 @@ export interface WriteRequestAuthorizedRequest {
     resourceBody: any;
 }
 
+export interface GetSearchFilterBasedOnIdentityRequest {
+    userIdentity: KeyValueMap;
+    operation: 'search-type' | 'search-system' | 'history-type' | 'history-system';
+}
+
 export interface Authorization {
     /**
      * Validates the access token and returns the userIdentity
@@ -87,4 +93,10 @@ export interface Authorization {
      * @throws UnauthorizedError
      */
     isWriteRequestAuthorized(request: WriteRequestAuthorizedRequest): Promise<void>;
+
+    /**
+     * Returns search filters to prevent doing expensive overly permissive search
+     * @returns Search filter
+     */
+    getSearchFilterBasedOnIdentity(request: GetSearchFilterBasedOnIdentityRequest): Promise<SearchFilter[]>;
 }
