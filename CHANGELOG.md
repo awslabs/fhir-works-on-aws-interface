@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.0.0] - 2020-12-21
+
+### Added
+- Added `SearchFilter` interface to allow `fhir-works-on-aws-search` to filter search results
+- Added `GetSearchFilterBasedOnIdentity` interface so `fhir-works-on-aws-authz` can provide `SearchFilter` that can be used for filtering search results
+
 ## [5.0.0] - 2020-12-11
 
 ### Added
