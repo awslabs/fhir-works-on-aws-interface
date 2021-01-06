@@ -69,7 +69,8 @@ export interface Search {
      */
     globalSearch(request: GlobalSearchRequest): Promise<SearchResponse>;
     /**
-     * Returns the fragment of the CapabilityStatement related to search
+     * Retrieve a subset of the CapabilityStatement with the search-related fields for all resources
+     * See https://www.hl7.org/fhir/capabilitystatement.html
      */
     getCapabilities(): Promise<SearchCapabilityStatement>;
 }
