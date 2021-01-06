@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.0.1] - 2021-01-06
+
+### Updated
+* `GetSearchFilterBasedOnIdentityRequest.operation` now includes `history-instance`
+
 ## [6.0.0] - 2020-12-21
 
 ### Added
