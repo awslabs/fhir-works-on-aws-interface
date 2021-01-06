@@ -58,7 +58,7 @@ export interface WriteRequestAuthorizedRequest {
 
 export interface GetSearchFilterBasedOnIdentityRequest {
     userIdentity: KeyValueMap;
-    operation: 'search-type' | 'search-system' | 'history-type' | 'history-system';
+    operation: 'search-type' | 'search-system' | 'history-type' | 'history-system' | 'history-instance';
 }
 
 export interface Authorization {
