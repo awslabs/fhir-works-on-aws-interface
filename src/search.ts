@@ -51,9 +51,9 @@ export interface SearchCapabilityStatement {
 export interface SearchCapabilities {
     searchParam: {
         name: string;
-        definition: string;
+        definition?: string;
         type: string;
-        documentation: string;
+        documentation?: string;
     }[];
     searchInclude: string[];
     searchRevInclude: string[];
