@@ -4,7 +4,7 @@
  */
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Search } from './search';
+import { Search, SearchCapabilityStatement } from './search';
 import { History } from './history';
 import { AccessBulkDataJobRequest, Authorization, GetSearchFilterBasedOnIdentityRequest } from './authorization';
 import { Persistence } from './persistence';
@@ -23,6 +23,9 @@ export module stubs {
     };
 
     export const search: Search = {
+        async getCapabilities(): Promise<SearchCapabilityStatement> {
+            throw new Error('Method not implemented.');
+        },
         typeSearch(request) {
             throw new Error('Method not implemented.');
         },
