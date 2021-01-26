@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.1.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v6.0.1...v7.1.0) (2021-01-26)
+
+
+### Features
+
+* add getCapabilities method to Search interface ([#42](https://github.com/awslabs/fhir-works-on-aws-interface/issues/42)) ([b274566](https://github.com/awslabs/fhir-works-on-aws-interface/commit/b274566c71899a2bd7c7d9112bfd85c889678ad4))
+
+
+### Bug Fixes
+
+* Add optional parameters to GetSearchFilter ([#45](https://github.com/awslabs/fhir-works-on-aws-interface/issues/45)) ([843bab8](https://github.com/awslabs/fhir-works-on-aws-interface/commit/843bab823a7ec6b77217556d806505a677f83c7a))
+
 ## [7.0.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v6.0.1...v7.0.0) (2021-01-12)
 
 
