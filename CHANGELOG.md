@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.1.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v7.0.1...v7.1.0) (2021-01-28)
+
+
+### Features
+
+* add implementation guides compile interface ([#44](https://github.com/awslabs/fhir-works-on-aws-interface/issues/44)) ([0b1b947](https://github.com/awslabs/fhir-works-on-aws-interface/commit/0b1b9479bc50e7e21a859bd9583fc53e6a7bdbeb))
+
 ## [7.0.1](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v7.0.0...v7.0.1) (2021-01-26)
 
 
