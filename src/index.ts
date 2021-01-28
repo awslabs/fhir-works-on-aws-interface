@@ -11,6 +11,7 @@ export * from './constants';
 export * from './fhirConfig';
 export * from './genericResponse';
 export * from './history';
+export * from './implementationGuides';
 export * from './persistence';
 export * from './resourceMeta';
 export * from './search';
