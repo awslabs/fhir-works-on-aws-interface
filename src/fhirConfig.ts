@@ -10,6 +10,7 @@ import { ConfigVersion, FhirVersion, R4Resource, STU3Resource, SystemOperation, 
 import { History } from './history';
 import { Persistence } from './persistence';
 import { Search } from './search';
+import { Validator } from './validator';
 
 /**
  * http://www.hl7.org/fhir/smart-app-launch/conformance/index.html#using-cs
