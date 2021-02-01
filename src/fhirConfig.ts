@@ -160,4 +160,5 @@ export interface FhirConfig {
     server: Server;
     logging: Logging;
     profile: Profile;
+    validators: Validator[];
 }
