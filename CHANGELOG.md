@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.0.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v7.1.0...v8.0.0) (2021-02-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* This adds validators as a required attribute to FhirConfig. 
+
+### Features
+
+* Add validator interface ([#48](https://github.com/awslabs/fhir-works-on-aws-interface/issues/48)) ([cf497a0](https://github.com/awslabs/fhir-works-on-aws-interface/commit/cf497a0f565821effe6169df44202c02a00eef95))
+
 ## [7.1.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v7.0.1...v7.1.0) (2021-01-28)
 
 
