@@ -102,7 +102,7 @@ export type R4Resource =
     | 'MedicinalProductContraindication'
     | 'MedicinalProductIndication'
     | 'MedicinalProductIngredient'
-    | 'MedicinalProductOperation'
+    | 'MedicinalProductInteraction'
     | 'MedicinalProductManufactured'
     | 'MedicinalProductPackaged'
     | 'MedicinalProductPharmaceutical'
@@ -115,6 +115,7 @@ export type R4Resource =
     | 'RiskEvidenceSynthesis'
     | 'ServiceRequest'
     | 'SpecimenDefinition'
+    | 'SubstanceNucleicAcid'
     | 'SubstancePolymer'
     | 'SubstanceProtein'
     | 'SubstanceReferenceInformation'
@@ -328,7 +329,7 @@ export const BASE_R4_RESOURCES: R4Resource[] = [
     'MedicinalProductContraindication',
     'MedicinalProductIndication',
     'MedicinalProductIngredient',
-    'MedicinalProductOperation',
+    'MedicinalProductInteraction',
     'MedicinalProductManufactured',
     'MedicinalProductPackaged',
     'MedicinalProductPharmaceutical',
@@ -374,6 +375,7 @@ export const BASE_R4_RESOURCES: R4Resource[] = [
     'StructureMap',
     'Subscription',
     'Substance',
+    'SubstanceNucleicAcid',
     'SubstancePolymer',
     'SubstanceProtein',
     'SubstanceReferenceInformation',
