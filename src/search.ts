@@ -3,6 +3,8 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
+import { PartialCapabilityStatement } from "./capabilities";
+
 export interface TypeSearchRequest extends GlobalSearchRequest {
     resourceType: string;
     allowedResourceTypes: string[];
@@ -44,7 +46,7 @@ export interface SearchFilter {
     logicalOperator: 'AND' | 'OR';
 }
 
-export interface SearchCapabilityStatement {
+export interface SearchCapabilityStatement extends PartialCapabilityStatement {
     [resourceType: string]: SearchCapabilities;
 }
 
