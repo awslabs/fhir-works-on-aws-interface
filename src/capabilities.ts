@@ -26,7 +26,6 @@ export interface PartialCapabilityStatement {
     [resourceType: string]: any;
 }
 
-
 export interface CapabilityRegistry {
     getCapabilities(): PartialCapabilityStatement;
 }

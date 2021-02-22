@@ -3,7 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-import { PartialCapabilityStatement } from "./capabilities";
+import { PartialCapabilityStatement } from './capabilities';
 
 export interface TypeSearchRequest extends GlobalSearchRequest {
     resourceType: string;

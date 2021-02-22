@@ -11,7 +11,7 @@ import { History } from './history';
 import { Persistence } from './persistence';
 import { Search } from './search';
 import { Validator } from './validator';
-import { CapabilityRegistry } from "./capabilities";
+import { CapabilityRegistry } from './capabilities';
 
 /**
  * http://www.hl7.org/fhir/smart-app-launch/conformance/index.html#using-cs

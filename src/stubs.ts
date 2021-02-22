@@ -10,7 +10,7 @@ import { AccessBulkDataJobRequest, Authorization, GetSearchFilterBasedOnIdentity
 import { Persistence } from './persistence';
 import { Bundle } from './bundle';
 import { BulkDataAccess } from './bulkDataAccess';
-import {CapabilityRegistry, PartialCapabilityStatement} from "./capabilities";
+import { CapabilityRegistry, PartialCapabilityStatement } from './capabilities';
 
 export module stubs {
     export const bundle: Bundle = {
@@ -264,7 +264,7 @@ export module stubs {
     export const registry: CapabilityRegistry = {
         getCapabilities(): PartialCapabilityStatement {
             return {};
-        }
+        },
     };
 
     export const bulkDataAccess: BulkDataAccess = {
