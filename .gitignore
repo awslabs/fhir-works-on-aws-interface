@@ -5,6 +5,7 @@
 /node_modules
 # Ignore any zip files
 *.zip
+*.tgz
 
 Info_Output.yml
 dist
