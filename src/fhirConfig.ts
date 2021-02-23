@@ -68,7 +68,7 @@ export type tokenEndpointAuthMethod = 'client_secret_basic' | 'client_secret_pos
 export interface Strategy {
     oauthPolicy?: OAuthStrategy | SmartStrategy;
     /**
-     * https://www.hl7.org/fhir/codesystem-restful-security-service.html
+     * http://hl7.org/fhir/ValueSet/restful-security-service
      */
     service?: 'OAuth' | 'SMART-on-FHIR' | 'NTLM' | 'Basic' | 'Kerberos' | 'Certificates';
 }
