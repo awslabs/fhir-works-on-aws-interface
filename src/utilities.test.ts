@@ -3,172 +3,155 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
+import each from 'jest-each';
 import { getRequestInformation } from './utilities';
+import { ExportType } from './bulkDataAccess';
 
 describe('getRequestInformation', () => {
-    test('verb: PUT; normal update', async () => {
-        const results = getRequestInformation('PUT', '/Patient/123');
-        expect(results).toEqual({ operation: 'update', resourceType: 'Patient', id: '123' });
+    describe('verb: PUT', () => {
+        each([
+            ['normal update', '/Patient/123', { operation: 'update', resourceType: 'Patient', id: '123' }],
+            [
+                'conditional update',
+                '/Patient/123?name=john',
+                { operation: 'update', resourceType: 'Patient', id: '123' },
+            ],
+            ['invalid update', 'fake', { operation: 'update', resourceType: 'fake' }],
+        ]).test('%s', (testName: string, urlPath: string, expectedResponse: any) => {
+            const results = getRequestInformation('PUT', urlPath);
+            expect(results).toEqual(expectedResponse);
+        });
     });
-    test('verb: PUT; conditional update', async () => {
-        const results = getRequestInformation('PUT', '/Patient/123?name=john');
-        expect(results).toEqual({ operation: 'update', resourceType: 'Patient', id: '123' });
+    describe('verb: PATCH', () => {
+        each([
+            ['normal patch', '/Patient/123', { operation: 'patch', resourceType: 'Patient', id: '123' }],
+            ['conditional patch', '/Patient/123?name=john', { operation: 'patch', resourceType: 'Patient', id: '123' }],
+            ['invalid patch', 'fake', { operation: 'patch', resourceType: 'fake' }],
+        ]).test('%s', (testName: string, urlPath: string, expectedResponse: any) => {
+            const results = getRequestInformation('PATCH', urlPath);
+            expect(results).toEqual(expectedResponse);
+        });
     });
-    test('verb: PUT; invalid update', async () => {
-        const results = getRequestInformation('PUT', 'fake');
-        expect(results).toEqual({ operation: 'update', resourceType: 'fake' });
+    describe('verb: DELETE', () => {
+        each([
+            ['normal delete', '/Patient/123', { operation: 'delete', resourceType: 'Patient', id: '123' }],
+            [
+                'conditional delete',
+                '/Patient/123?name=john',
+                { operation: 'delete', resourceType: 'Patient', id: '123' },
+            ],
+            ['invalid delete', 'fake', { operation: 'delete', resourceType: 'fake' }],
+        ]).test('%s', (testName: string, urlPath: string, expectedResponse: any) => {
+            const results = getRequestInformation('DELETE', urlPath);
+            expect(results).toEqual(expectedResponse);
+        });
     });
-    test('verb: PATCH; normal patch', async () => {
-        const results = getRequestInformation('PATCH', '/Patient/123');
-        expect(results).toEqual({ operation: 'patch', resourceType: 'Patient', id: '123' });
+    describe('verb: GET', () => {
+        each([
+            ['read: metadata', '/metadata', { operation: 'read', resourceType: 'metadata' }],
+            ['read: metadata; with search', '/metadata?mode=full', { operation: 'read', resourceType: 'metadata' }],
+            [
+                'vread',
+                '/Patient/123/_history/345',
+                { operation: 'vread', resourceType: 'Patient', id: '123', vid: '345' },
+            ],
+            [
+                'instance-history with query',
+                '/Patient/123/_history?name=joe',
+                { operation: 'history-instance', resourceType: 'Patient', id: '123' },
+            ],
+            [
+                'instance-history without query',
+                '/Patient/123/_history',
+                { operation: 'history-instance', resourceType: 'Patient', id: '123' },
+            ],
+            [
+                'type-history with query',
+                '/Patient/_history?name=joe',
+                { operation: 'history-type', resourceType: 'Patient' },
+            ],
+            [
+                'type-history without query',
+                '/Patient/_history/',
+                { operation: 'history-type', resourceType: 'Patient' },
+            ],
+            ['history with query', '/_history?name=joe', { operation: 'history-system' }],
+            ['history without query', '_history', { operation: 'history-system' }],
+            ['read', 'Patient/123', { operation: 'read', resourceType: 'Patient', id: '123' }],
+            ['type-search with query', '/Patient?name=joe', { operation: 'search-type', resourceType: 'Patient' }],
+            ['type-search without query', '/Patient', { operation: 'search-type', resourceType: 'Patient' }],
+            ['search globally with query', '/?name=joe', { operation: 'search-system' }],
+            ['search globally without query', '', { operation: 'search-system' }],
+        ]).test('%s', (testName: string, urlPath: string, expectedResponse: any) => {
+            const results = getRequestInformation('GET', urlPath);
+            expect(results).toEqual(expectedResponse);
+        });
     });
-    test('verb: PATCH; conditional patch', async () => {
-        const results = getRequestInformation('PATCH', '/Patient/123?name=john');
-        expect(results).toEqual({ operation: 'patch', resourceType: 'Patient', id: '123' });
+    describe('verb: POST', () => {
+        each([
+            ['search on type', '/Patient/_search?name=joe', { operation: 'search-type', resourceType: 'Patient' }],
+            ['search globally', '/_search/', { operation: 'search-system' }],
+            ['batch', '?format=json', { operation: 'transaction' }],
+            ['create', 'Patient/?format=json', { operation: 'create', resourceType: 'Patient' }],
+        ]).test('%s', (testName: string, urlPath: string, expectedResponse: any) => {
+            const results = getRequestInformation('POST', urlPath);
+            expect(results).toEqual(expectedResponse);
+        });
     });
-    test('verb: PATCH; invalid patch', async () => {
-        const results = getRequestInformation('PATCH', 'fake');
-        expect(results).toEqual({ operation: 'patch', resourceType: 'fake' });
-    });
-    test('verb: DELETE; normal delete', async () => {
-        const results = getRequestInformation('DELETE', '/Patient/123');
-        expect(results).toEqual({ operation: 'delete', resourceType: 'Patient', id: '123' });
-    });
-    test('verb: DELETE; conditional delete', async () => {
-        const results = getRequestInformation('DELETE', '/Patient/123?name=john');
-        expect(results).toEqual({ operation: 'delete', resourceType: 'Patient', id: '123' });
-    });
-    test('verb: DELETE; invalid delete', async () => {
-        const results = getRequestInformation('DELETE', 'fake');
-        expect(results).toEqual({ operation: 'delete', resourceType: 'fake' });
-    });
-    test('verb: GET; read: metadata', async () => {
-        const results = getRequestInformation('GET', '/metadata');
-        expect(results).toEqual({ operation: 'read', resourceType: 'metadata' });
-    });
-    test('verb: GET; read: metadata; with search', async () => {
-        const results = getRequestInformation('GET', '/metadata?mode=full');
-        expect(results).toEqual({ operation: 'read', resourceType: 'metadata' });
-    });
-    test('verb: GET; vread', async () => {
-        const results = getRequestInformation('GET', '/Patient/123/_history/345');
-        expect(results).toEqual({ operation: 'vread', resourceType: 'Patient', id: '123', vid: '345' });
-    });
-    test('verb: GET; instance-history with query', async () => {
-        const results = getRequestInformation('GET', '/Patient/123/_history?name=joe');
-        expect(results).toEqual({ operation: 'history-instance', resourceType: 'Patient', id: '123' });
-    });
-    test('verb: GET; instance-history without query', async () => {
-        const results = getRequestInformation('GET', '/Patient/123/_history');
-        expect(results).toEqual({ operation: 'history-instance', resourceType: 'Patient', id: '123' });
-    });
-    test('verb: GET; type-history with query', async () => {
-        const results = getRequestInformation('GET', '/Patient/_history?name=joe');
-        expect(results).toEqual({ operation: 'history-type', resourceType: 'Patient' });
-    });
-    test('verb: GET; type-history without query', async () => {
-        const results = getRequestInformation('GET', '/Patient/_history/');
-        expect(results).toEqual({ operation: 'history-type', resourceType: 'Patient' });
-    });
-    test('verb: GET; history with query', async () => {
-        const results = getRequestInformation('GET', '/_history?name=joe');
-        expect(results).toEqual({ operation: 'history-system' });
-    });
-    test('verb: GET; history without query', async () => {
-        const results = getRequestInformation('GET', '_history');
-        expect(results).toEqual({ operation: 'history-system' });
-    });
-    test('verb: GET; read', async () => {
-        const results = getRequestInformation('GET', 'Patient/123');
-        expect(results).toEqual({ operation: 'read', resourceType: 'Patient', id: '123' });
-    });
-    test('verb: GET; type-search with query', async () => {
-        const results = getRequestInformation('GET', '/Patient?name=joe');
-        expect(results).toEqual({ operation: 'search-type', resourceType: 'Patient' });
-    });
-    test('verb: GET; type-search without query', async () => {
-        const results = getRequestInformation('GET', '/Patient');
-        expect(results).toEqual({ operation: 'search-type', resourceType: 'Patient' });
-    });
-    test('verb: GET; search globally with query', async () => {
-        const results = getRequestInformation('GET', '/?name=joe');
-        expect(results).toEqual({ operation: 'search-system' });
-    });
-    test('verb: GET; search globally without query', async () => {
-        const results = getRequestInformation('GET', '');
-        expect(results).toEqual({ operation: 'search-system' });
-    });
-    test('verb: POST; search on type', async () => {
-        const results = getRequestInformation('POST', '/Patient/_search?name=joe');
-        expect(results).toEqual({ operation: 'search-type', resourceType: 'Patient' });
-    });
-    test('verb: POST; search globally', async () => {
-        const results = getRequestInformation('POST', '/_search/');
-        expect(results).toEqual({ operation: 'search-system' });
-    });
-    test('verb: POST; batch', async () => {
-        const results = getRequestInformation('POST', '?format=json');
-        expect(results).toEqual({ operation: 'transaction' });
-    });
-    test('verb: POST; create', async () => {
-        const results = getRequestInformation('POST', 'Patient/?format=json');
-        expect(results).toEqual({ operation: 'create', resourceType: 'Patient' });
-    });
-    test('verb: FAKE', async () => {
+    test('verb: FAKE', () => {
         expect(() => {
             getRequestInformation('FAKE', '/Patient');
         }).toThrow(new Error('Unable to parse the http verb'));
     });
     describe('Export', () => {
         describe('initiate-export', () => {
-            test('system', async () => {
-                const results = getRequestInformation('GET', '/$export');
+            each([
+                ['system', '/$export', 'system'],
+                ['patient', '/Patient/$export', 'patient'],
+                ['group', '/Group/1/$export', 'group'],
+            ]).test('%s', (testName: string, urlPath: string, exportType: ExportType) => {
+                const results = getRequestInformation('GET', urlPath);
                 expect(results).toEqual({
                     operation: 'read',
                     bulkDataAuth: {
                         operation: 'initiate-export',
-                        exportType: 'system',
+                        exportType,
                     },
                 });
-            });
-            test('patient', async () => {
-                const results = getRequestInformation('GET', '/Patient/$export');
-                expect(results).toEqual({
-                    operation: 'read',
-                    bulkDataAuth: {
-                        operation: 'initiate-export',
-                        exportType: 'patient',
-                    },
-                });
-            });
-            test('group', async () => {
-                const results = getRequestInformation('GET', '/Group/1/$export');
-                expect(results).toEqual({
-                    operation: 'read',
-                    bulkDataAuth: {
-                        operation: 'initiate-export',
-                        exportType: 'group',
-                    },
-                });
-            });
-        });
-        test('get-status', async () => {
-            const results = getRequestInformation('GET', '/$export/a91b2a31-a964-4919-a220-8be73fb053dd');
-            expect(results).toEqual({
-                operation: 'read',
-                bulkDataAuth: {
-                    operation: 'get-status-export',
-                },
             });
         });
 
-        test('cancel-export', async () => {
-            const results = getRequestInformation('DELETE', '/$export/a91b2a31-a964-4919-a220-8be73fb053dd');
-            expect(results).toEqual({
-                operation: 'delete',
-                bulkDataAuth: {
-                    operation: 'cancel-export',
-                },
+        describe('get-status', () => {
+            each([
+                ['system', '/$export/a91b2a31-a964-4919-a220-8be73fb053dd', 'system'],
+                ['patient', '/Patient/$export/a91b2a31-a964-4919-a220-8be73fb053dd', 'patient'],
+                ['group', '/Group/1/$export/a91b2a31-a964-4919-a220-8be73fb053dd', 'group'],
+            ]).test('%s', (testName: string, urlPath: string, exportType: ExportType) => {
+                const results = getRequestInformation('GET', urlPath);
+                expect(results).toEqual({
+                    operation: 'read',
+                    bulkDataAuth: {
+                        exportType,
+                        operation: 'get-status-export',
+                    },
+                });
+            });
+        });
+
+        describe('cancel-export', () => {
+            each([
+                ['system', '/$export/a91b2a31-a964-4919-a220-8be73fb053dd', 'system'],
+                ['patient', '/Patient/$export/a91b2a31-a964-4919-a220-8be73fb053dd', 'patient'],
+                ['group', '/Group/1/$export/a91b2a31-a964-4919-a220-8be73fb053dd', 'group'],
+            ]).test('%s', (testName: string, urlPath: string, exportType: ExportType) => {
+                const results = getRequestInformation('DELETE', urlPath);
+                expect(results).toEqual({
+                    operation: 'delete',
+                    bulkDataAuth: {
+                        exportType,
+                        operation: 'cancel-export',
+                    },
+                });
             });
         });
     });
