@@ -39,6 +39,7 @@
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-prettier": "^3.1.2",
     "jest": "^25.1.0",
+    "jest-each": "^26.6.2",
     "jest-mock-extended": "^1.0.8",
     "prettier": "^1.19.1",
     "ts-jest": "^25.1.0",

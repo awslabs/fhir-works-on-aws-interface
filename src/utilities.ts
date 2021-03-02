@@ -44,6 +44,17 @@ function cleanUrlPath(urlPath: string): string {
     return path;
 }
 
+function getExportType(urlPath: string): ExportType {
+    let exportType: ExportType = 'system';
+    if (urlPath.includes('/Patient/')) {
+        exportType = 'patient';
+    }
+    if (urlPath.includes('/Group/')) {
+        exportType = 'group';
+    }
+    return exportType;
+}
+
 export function getRequestInformation(
     verb: string,
     urlPath: string,
@@ -74,10 +85,12 @@ export function getRequestInformation(
         }
         case 'DELETE': {
             if (exportJobUrlRegExp.test(urlPath)) {
+                const exportType = getExportType(urlPath);
                 const operation = 'cancel-export';
                 return {
                     operation: 'delete',
                     bulkDataAuth: {
+                        exportType,
                         operation,
                     },
                 };
@@ -90,22 +103,16 @@ export function getRequestInformation(
         }
         case 'GET': {
             if (urlPath.includes('$export')) {
+                const exportType = getExportType(urlPath);
                 if (exportJobUrlRegExp.test(urlPath)) {
                     const operation = 'get-status-export';
                     return {
                         operation: 'read',
                         bulkDataAuth: {
+                            exportType,
                             operation,
                         },
                     };
-                }
-
-                let exportType: ExportType = 'system';
-                if (urlPath.includes('/Patient/')) {
-                    exportType = 'patient';
-                }
-                if (urlPath.includes('/Group/')) {
-                    exportType = 'group';
                 }
                 return {
                     operation: 'read',
