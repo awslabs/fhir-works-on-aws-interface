@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [8.0.1](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v8.0.0...v8.0.1) (2021-03-02)
+
+
+### Bug Fixes
+
+* Include ExportType for export routes ([#57](https://github.com/awslabs/fhir-works-on-aws-interface/issues/57)) ([bd518a6](https://github.com/awslabs/fhir-works-on-aws-interface/commit/bd518a6c03397ba9896972c3f2ff200e3d6f68ee))
+* Update BASE_R4_RESOURCES with missing resources ([#54](https://github.com/awslabs/fhir-works-on-aws-interface/issues/54)) ([08ada00](https://github.com/awslabs/fhir-works-on-aws-interface/commit/08ada005426132377a65860e0faa9870fa6c0ad7))
+
 ## [8.0.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v7.1.0...v8.0.0) (2021-02-10)
 
 
