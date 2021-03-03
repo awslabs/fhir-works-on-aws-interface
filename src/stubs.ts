@@ -10,7 +10,6 @@ import { AccessBulkDataJobRequest, Authorization, GetSearchFilterBasedOnIdentity
 import { Persistence } from './persistence';
 import { Bundle } from './bundle';
 import { BulkDataAccess } from './bulkDataAccess';
-import { CapabilityRegistry, PartialCapabilityStatement } from './capabilities';
 
 export module stubs {
     export const bundle: Bundle = {
@@ -258,12 +257,6 @@ export module stubs {
 
         conditionalDeleteResource(request, queryParams) {
             throw new Error('Method not implemented.');
-        },
-    };
-
-    export const registry: CapabilityRegistry = {
-        getCapabilities(): PartialCapabilityStatement {
-            return {};
         },
     };
 

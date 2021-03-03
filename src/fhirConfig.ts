@@ -11,7 +11,6 @@ import { History } from './history';
 import { Persistence } from './persistence';
 import { Search } from './search';
 import { Validator } from './validator';
-import { CapabilityRegistry } from './capabilities';
 
 /**
  * http://www.hl7.org/fhir/smart-app-launch/conformance/index.html#using-cs
@@ -98,7 +97,6 @@ export interface Resource {
     persistence: Persistence;
     typeHistory: History;
     typeSearch: Search;
-    registry: CapabilityRegistry;
 }
 
 export interface Resources {
@@ -114,6 +112,7 @@ export interface Profile {
     bulkDataAccess?: BulkDataAccess;
     genericResource?: GenericResource;
     resources?: Resources;
+    compiledImplementationGuides?: any;
 }
 /**
  * Used in the generation of the CapabilityStatement
