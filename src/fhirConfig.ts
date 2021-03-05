@@ -112,6 +112,7 @@ export interface Profile {
     bulkDataAccess?: BulkDataAccess;
     genericResource?: GenericResource;
     resources?: Resources;
+    compiledImplementationGuides?: any;
 }
 /**
  * Used in the generation of the CapabilityStatement
