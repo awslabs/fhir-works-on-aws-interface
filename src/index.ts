@@ -13,7 +13,6 @@ export * from './genericResponse';
 export * from './history';
 export * from './implementationGuides';
 export * from './persistence';
-export * from './profiles';
 export * from './resourceMeta';
 export * from './search';
 export * from './utilities';
