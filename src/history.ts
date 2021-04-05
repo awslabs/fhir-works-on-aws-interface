@@ -5,22 +5,18 @@
 
 import { SearchEntry, SearchFilter } from './search';
 
-export interface InstanceHistoryRequest extends TypeHistoryRequest {
-    id: string;
-}
-
-export interface TypeHistoryRequest extends GlobalHistoryRequest {
-    resourceType: string;
-}
-
 export interface GlobalHistoryRequest {
     baseUrl: string; // server's URL
     queryParams?: any;
     searchFilters?: SearchFilter[];
 }
 
-export interface HistoryResponse {
-    result: HistoryResult;
+export interface TypeHistoryRequest extends GlobalHistoryRequest {
+    resourceType: string;
+}
+
+export interface InstanceHistoryRequest extends TypeHistoryRequest {
+    id: string;
 }
 
 export interface HistoryResult {
@@ -31,6 +27,10 @@ export interface HistoryResult {
     previousResultUrl?: string;
     nextResultUrl?: string;
     lastResultUrl?: string;
+}
+
+export interface HistoryResponse {
+    result: HistoryResult;
 }
 
 export interface History {

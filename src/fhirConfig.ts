@@ -24,6 +24,8 @@ export interface OAuthStrategy {
     managementEndpoint?: string;
 }
 
+export type tokenEndpointAuthMethod = 'client_secret_basic' | 'client_secret_post';
+
 /**
  * http://www.hl7.org/fhir/smart-app-launch/conformance/index.html#using-well-known
  */
@@ -63,8 +65,6 @@ export interface SmartStrategy extends OAuthStrategy {
     tokenEndpointAuthMethodsSupported?: tokenEndpointAuthMethod[];
 }
 
-export type tokenEndpointAuthMethod = 'client_secret_basic' | 'client_secret_post';
-
 export interface Strategy {
     oauthPolicy?: OAuthStrategy | SmartStrategy;
     /**
@@ -86,17 +86,17 @@ export interface Logging {
     level: 'debug' | 'info' | 'warn' | 'error';
 }
 
-export interface GenericResource extends Resource {
-    excludedR4Resources?: R4Resource[];
-    excludedSTU3Resources?: STU3Resource[];
-}
-
 export interface Resource {
     operations: TypeOperation[];
     fhirVersions: FhirVersion[];
     persistence: Persistence;
     typeHistory: History;
     typeSearch: Search;
+}
+
+export interface GenericResource extends Resource {
+    excludedR4Resources?: R4Resource[];
+    excludedSTU3Resources?: STU3Resource[];
 }
 
 export interface Resources {

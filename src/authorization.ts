@@ -8,15 +8,6 @@ import { TypeOperation, SystemOperation, KeyValueMap } from './constants';
 import { ExportType } from './bulkDataAccess';
 import { SearchFilter } from './search';
 
-export interface VerifyAccessTokenRequest {
-    accessToken: string;
-    operation: TypeOperation | SystemOperation;
-    resourceType?: string;
-    id?: string;
-    vid?: string;
-    bulkDataAuth?: BulkDataAuth;
-}
-
 export interface BulkDataAuth {
     operation:
         | 'initiate-export'
@@ -27,6 +18,15 @@ export interface BulkDataAuth {
         | 'cancel-import';
     exportType?: ExportType;
     importResources?: string[];
+}
+
+export interface VerifyAccessTokenRequest {
+    accessToken: string;
+    operation: TypeOperation | SystemOperation;
+    resourceType?: string;
+    id?: string;
+    vid?: string;
+    bulkDataAuth?: BulkDataAuth;
 }
 
 export interface AuthorizationBundleRequest {

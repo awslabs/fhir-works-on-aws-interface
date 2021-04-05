@@ -3,9 +3,11 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
-export interface TypeSearchRequest extends GlobalSearchRequest {
-    resourceType: string;
-    allowedResourceTypes: string[];
+export interface SearchFilter {
+    key: string;
+    value: string[];
+    comparisonOperator: '==' | '!=' | '>' | '<' | '>=' | '<=';
+    logicalOperator: 'AND' | 'OR';
 }
 
 export interface GlobalSearchRequest {
@@ -14,8 +16,9 @@ export interface GlobalSearchRequest {
     searchFilters?: SearchFilter[];
 }
 
-export interface SearchResponse {
-    result: SearchResult;
+export interface TypeSearchRequest extends GlobalSearchRequest {
+    resourceType: string;
+    allowedResourceTypes: string[];
 }
 
 export interface SearchEntry {
@@ -37,15 +40,8 @@ export interface SearchResult {
     lastResultUrl?: string;
 }
 
-export interface SearchFilter {
-    key: string;
-    value: string[];
-    comparisonOperator: '==' | '!=' | '>' | '<' | '>=' | '<=';
-    logicalOperator: 'AND' | 'OR';
-}
-
-export interface SearchCapabilityStatement {
-    [resourceType: string]: SearchCapabilities;
+export interface SearchResponse {
+    result: SearchResult;
 }
 
 export interface SearchCapabilities {
@@ -57,6 +53,10 @@ export interface SearchCapabilities {
     }[];
     searchInclude: string[];
     searchRevInclude: string[];
+}
+
+export interface SearchCapabilityStatement {
+    [resourceType: string]: SearchCapabilities;
 }
 
 export interface Search {
