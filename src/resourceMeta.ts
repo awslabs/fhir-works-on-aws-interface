@@ -17,14 +17,22 @@ export interface Meta {
     versionId: string;
     lastUpdated: string;
     source?: string;
+    uri: string;
     profile?: Coding;
+    security?: Coding;
     tag?: Coding;
 }
 
-export function generateMeta(vid: string, lastUpdatedDate: Date = new Date()): Meta {
+export function generateMeta(vid: string, lastUpdatedDate: Date = new Date(), source: string, 
+profile: Coding, uri: string, security: Coding, tag: Coding): Meta {
     const meta: Meta = {
         versionId: vid,
         lastUpdated: lastUpdatedDate.toISOString(),
+        source,
+        profile,
+        uri,
+        security,
+        tag,
     };
     return meta;
 }
