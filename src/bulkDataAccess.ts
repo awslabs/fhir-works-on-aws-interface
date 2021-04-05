@@ -6,6 +6,7 @@
 export type ExportJobStatus = 'completed' | 'failed' | 'in-progress' | 'canceled' | 'canceling';
 
 export type ExportType = 'system' | 'group' | 'patient';
+
 export interface InitiateExportRequest {
     requesterUserId: string;
     exportType: ExportType;
