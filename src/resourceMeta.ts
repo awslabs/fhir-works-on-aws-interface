@@ -17,8 +17,9 @@ export interface Meta {
     versionId: string;
     lastUpdated: string;
     source?: string;
-    profile?: Coding;
-    tag?: Coding;
+    profile?: any | any[];
+    security?: Coding | Coding[];
+    tag?: Coding | Coding[];
 }
 
 export function generateMeta(vid: string, lastUpdatedDate: Date = new Date()): Meta {

@@ -5,6 +5,27 @@
 
 import { TypeOperation, SystemOperation } from './constants';
 
+export interface Reference {
+    resourceType: string;
+    id: string;
+    vid: string;
+    rootUrl: string;
+    referenceFullUrl: string;
+    // This param tells where to find the reference in the Bundle entry
+    referencePath: string;
+}
+
+export interface BatchReadWriteRequest {
+    operation: TypeOperation | SystemOperation;
+    resourceType: string;
+    id: string;
+    vid?: string;
+    resource: any;
+    // GET requests, only contains the URL of the resource
+    fullUrl?: string;
+    references?: Reference[];
+}
+
 export interface BatchRequest {
     requests: BatchReadWriteRequest[];
     startTime: Date;
@@ -24,36 +45,13 @@ export interface BatchReadWriteResponse {
     lastModified: string;
 }
 
-export interface BatchReadWriteRequest {
-    operation: TypeOperation | SystemOperation;
-    resourceType: string;
-    id: string;
-    vid?: string;
-    resource: any;
-    // GET requests, only contains the URL of the resource
-    fullUrl?: string;
-    references?: Reference[];
-}
-
-export interface Reference {
-    resourceType: string;
-    id: string;
-    vid: string;
-    rootUrl: string;
-    referenceFullUrl: string;
-    // This param tells where to find the reference in the Bundle entry
-    referencePath: string;
-}
-
+export type BatchReadWriteErrorType = 'USER_ERROR' | 'SYSTEM_ERROR';
 export interface BundleResponse {
     readonly success: boolean;
     readonly errorType?: BatchReadWriteErrorType;
     readonly message: string;
     readonly batchReadWriteResponses: BatchReadWriteResponse[];
 }
-
-export type BatchReadWriteErrorType = 'USER_ERROR' | 'SYSTEM_ERROR';
-
 export interface Bundle {
     /**
      * A set of actions to be independently performed as a "batch". For example if one operation in the batch

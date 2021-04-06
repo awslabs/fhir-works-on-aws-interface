@@ -1,4 +1,4 @@
-/* 
+/*
  *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *  SPDX-License-Identifier: Apache-2.0
  */
@@ -24,7 +24,9 @@ module.exports = {
         '@typescript-eslint/no-useless-constructor': 'error',
         'no-empty-function': 'off',
         '@typescript-eslint/no-empty-function': 'error',
-        'import/no-extraneous-dependencies': ['error', {'devDependencies': ['**/*.test.ts']}],
+        'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.ts'] }],
+        'no-shadow': 'off', // replaced by ts-eslint rule below
+        '@typescript-eslint/no-shadow': 'error',
     },
     settings: {
         'import/resolver': {

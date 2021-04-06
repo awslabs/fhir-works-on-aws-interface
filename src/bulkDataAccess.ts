@@ -1,3 +1,12 @@
+/*
+ *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *  SPDX-License-Identifier: Apache-2.0
+ */
+
+export type ExportJobStatus = 'completed' | 'failed' | 'in-progress' | 'canceled' | 'canceling';
+
+export type ExportType = 'system' | 'group' | 'patient';
+
 export interface InitiateExportRequest {
     requesterUserId: string;
     exportType: ExportType;
@@ -21,10 +30,6 @@ export interface GetExportStatusResponse {
     errorArray?: [{ type: string; url: string }]; // An export job that is completed can optionally have an error array https://hl7.org/Fhir/uv/bulkdata/export/index.html#response---complete-status
     errorMessage?: string; // Error message for 4xx or 5xx error of an export job https://hl7.org/Fhir/uv/bulkdata/export/index.html#response---error-status-1
 }
-
-export type ExportJobStatus = 'completed' | 'failed' | 'in-progress' | 'canceled' | 'canceling';
-
-export type ExportType = 'system' | 'group' | 'patient';
 
 export interface BulkDataAccess {
     /**
