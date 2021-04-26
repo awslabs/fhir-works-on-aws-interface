@@ -20,10 +20,24 @@ export interface BulkDataAuth {
     importResources?: string[];
 }
 
+/**
+ * Contains information from incoming http request. As well as
+ * additional context information such use case specific auth handlers or
+ * operational information specific to this request.
+ */
+export interface RequestContext {
+    method: string;
+    url: string;
+    hostname: string;
+    headers: KeyValueMap;
+    contextInfo: KeyValueMap;
+}
+
 export interface VerifyAccessTokenRequest {
     accessToken: string;
     operation: TypeOperation | SystemOperation;
     resourceType?: string;
+    requestContext?: RequestContext;
     id?: string;
     vid?: string;
     bulkDataAuth?: BulkDataAuth;
@@ -31,33 +45,39 @@ export interface VerifyAccessTokenRequest {
 
 export interface AuthorizationBundleRequest {
     userIdentity: KeyValueMap;
+    requestContext?: RequestContext;
     requests: BatchReadWriteRequest[];
 }
 
 export interface AllowedResourceTypesForOperationRequest {
     userIdentity: KeyValueMap;
+    requestContext?: RequestContext;
     operation: TypeOperation | SystemOperation;
 }
 
 export interface AccessBulkDataJobRequest {
     userIdentity: KeyValueMap;
+    requestContext?: RequestContext;
     jobOwnerId: string;
 }
 
 export interface ReadResponseAuthorizedRequest {
     userIdentity: KeyValueMap;
+    requestContext?: RequestContext;
     operation: TypeOperation | SystemOperation;
     readResponse: any;
 }
 
 export interface WriteRequestAuthorizedRequest {
     userIdentity: KeyValueMap;
+    requestContext?: RequestContext;
     operation: TypeOperation;
     resourceBody: any;
 }
 
 export interface GetSearchFilterBasedOnIdentityRequest {
     userIdentity: KeyValueMap;
+    requestContext?: RequestContext;
     operation: 'search-type' | 'search-system' | 'history-type' | 'history-system' | 'history-instance';
     /** Used for type and instance based searching */
     resourceType?: string;
