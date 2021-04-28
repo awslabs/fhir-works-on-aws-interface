@@ -20,13 +20,15 @@ export interface BulkDataAuth {
     importResources?: string[];
 }
 
+export type VerbType = 'CONNECT' | 'DELETE' | 'GET' | 'HEAD' | 'OPTIONS' | 'PATCH' | 'POST' | 'PUT' | 'TRACE';
+
 /**
  * Contains information from incoming http request. As well as
  * additional context information such use case specific auth handlers or
  * operational information specific to this request.
  */
 export interface RequestContext {
-    method: string;
+    verb?: VerbType;
     url: string;
     hostname: string;
     headers: KeyValueMap;
