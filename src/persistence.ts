@@ -9,6 +9,7 @@ export interface CreateResourceRequest {
     resourceType: string;
     resource: any;
     id?: string;
+    ttl?: number; // used for archiving
 }
 
 export interface UpdateResourceRequest {
