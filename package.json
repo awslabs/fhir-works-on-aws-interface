@@ -25,7 +25,8 @@
     "release": "yarn run build && yarn run lint && yarn run test",
     "clean": "rm -rf build/* node_modules/* dist/* .serverless/* .nyc_output/* lib/*",
     "local": "node .",
-    "prepublish": "tsc"
+    "prepublish": "tsc",
+    "postinstall": "tsc"
   },
   "dependencies": {},
   "devDependencies": {
