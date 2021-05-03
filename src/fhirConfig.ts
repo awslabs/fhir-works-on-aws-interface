@@ -82,10 +82,6 @@ export interface Server {
     url: string;
 }
 
-export interface Logging {
-    level: 'debug' | 'info' | 'warn' | 'error';
-}
-
 export interface Resource {
     operations: TypeOperation[];
     fhirVersions: FhirVersion[];
@@ -160,7 +156,6 @@ export interface FhirConfig {
     productInfo: ProductInfo;
     auth: Auth;
     server: Server;
-    logging: Logging;
     profile: Profile;
     validators: Validator[];
 }

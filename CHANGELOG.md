@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### Features
+
+* Add Winston logger builder for other components to use
+
+### [8.2.1](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v8.2.1...v8.1.1) (2021-04-06)
+
 ### [8.1.1](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v8.1.0...v8.1.1) (2021-04-06)
 
 
