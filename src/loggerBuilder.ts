@@ -42,7 +42,7 @@ class SimpleConsole extends Transport {
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export function getLogger(metadata?: any) {
+export function makeLogger(metadata?: any) {
     return createLogger({
         level: process.env.LOG_LEVEL,
         format: combine(format.colorize(), splat(), timestamp(), format.json(), myFormat),
