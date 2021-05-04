@@ -24,7 +24,7 @@ export type VerbType = 'CONNECT' | 'DELETE' | 'GET' | 'HEAD' | 'OPTIONS' | 'PATC
 
 /**
  * Contains information from incoming http request. As well as
- * additional context information such use case specific auth handlers or
+ * additional context information such as use case specific auth handlers or
  * operational information specific to this request.
  */
 export interface RequestContext {
