@@ -1,39 +1,34 @@
-import { createLogger, format } from 'winston';
+import { createLogger, Logger } from 'winston';
 import Transport from 'winston-transport';
-
-const { combine, splat, timestamp, printf } = format;
-
-const myFormat = printf(info => {
-    let msg = `${info.message} ${info.timestamp} `;
-    if (info.meta) {
-        msg += JSON.stringify(info.meta);
-    }
-    return msg;
-});
 
 class SimpleConsole extends Transport {
     log(info: any, callback: () => void) {
         setImmediate(() => this.emit('logged', info));
-        const msg = info[Symbol.for('message')];
+        const msg = [info.meta, info.message];
+        if (info[Symbol.for('splat')]) {
+            msg.push(...info[Symbol.for('splat')]);
+        }
 
         // Use console here so request ID and log level can be automatically attached in CloudWatch log
+        /* eslint-disable no-console */
         switch (info[Symbol.for('level')]) {
             case 'debug':
-                console.debug(msg);
+                console.debug(...msg);
                 break;
             case 'info':
-                console.info(msg);
+                console.info(...msg);
                 break;
             case 'warn':
-                console.warn(msg);
+                console.warn(...msg);
                 break;
             case 'error':
-                console.error(msg);
+                console.error(...msg);
                 break;
             default:
-                console.log(msg);
+                console.log(...msg);
                 break;
         }
+        /* eslint-enable no-console */
 
         if (callback) {
             callback();
@@ -42,11 +37,10 @@ class SimpleConsole extends Transport {
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export function makeLogger(metadata?: any) {
+export function makeLogger(metadata?: any, logLevel: string | undefined = process.env.LOG_LEVEL): Logger {
     return createLogger({
-        level: process.env.LOG_LEVEL,
-        format: combine(format.colorize(), splat(), timestamp(), format.json(), myFormat),
-        transports: [new SimpleConsole({})],
-        defaultMeta: metadata,
+        level: logLevel,
+        transports: [new SimpleConsole()],
+        defaultMeta: { meta: metadata },
     });
 }
