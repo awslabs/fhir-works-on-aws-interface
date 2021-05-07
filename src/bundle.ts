@@ -21,6 +21,7 @@ export interface BatchReadWriteRequest {
     id: string;
     vid?: string;
     resource: any;
+    ttlInSeconds?: number; // archive timestamp in Unix epoch time format in seconds
     // GET requests, only contains the URL of the resource
     fullUrl?: string;
     references?: Reference[];
