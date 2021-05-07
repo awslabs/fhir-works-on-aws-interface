@@ -27,7 +27,8 @@
     "local": "node .",
     "prepublish": "tsc"
   },
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "@types/jest": "^26.0.19",
     "@types/node": "^12",
