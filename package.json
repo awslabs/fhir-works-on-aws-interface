@@ -27,7 +27,10 @@
     "local": "node .",
     "prepublish": "tsc"
   },
-  "dependencies": {},
+  "dependencies": {
+    "winston": "^3.3.3",
+    "winston-transport": "^4.4.0"
+  },
   "devDependencies": {
     "@types/jest": "^26.0.19",
     "@types/node": "^12",
