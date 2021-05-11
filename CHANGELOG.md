@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [8.2.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v8.1.1...v8.2.0) (2021-05-11)
+
+
+### Features
+
+* Add a request context to authorization related interfaces. ([#62](https://github.com/awslabs/fhir-works-on-aws-interface/issues/62)) ([f56ca09](https://github.com/awslabs/fhir-works-on-aws-interface/commit/f56ca091b72bc16053cfe7894bb759b486db9635))
+* Resource Archive Support ([#64](https://github.com/awslabs/fhir-works-on-aws-interface/issues/64)) ([99d0593](https://github.com/awslabs/fhir-works-on-aws-interface/commit/99d05931b3bc931b356e8e74cc5fb203c96be049))
+
 ### [8.1.1](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v8.1.0...v8.1.1) (2021-04-06)
 
 
