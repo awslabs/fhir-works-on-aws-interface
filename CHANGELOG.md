@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [9.0.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v8.2.0...v9.0.0) (2021-05-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* Remove logging interface export 
+* feat: add logger builder to be used by other FHIR components 
+
+### Features
+
+* Add logger builder ([#65](https://github.com/awslabs/fhir-works-on-aws-interface/issues/65)) ([aa99182](https://github.com/awslabs/fhir-works-on-aws-interface/commit/aa9918297fe3d4e5d5b81efe62c774ccc1083914))
+
 ## [8.2.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v8.1.1...v8.2.0) (2021-05-11)
 
 
