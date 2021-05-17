@@ -1,6 +1,6 @@
 {
   "name": "fhir-works-on-aws-interface",
-  "version": "8.1.1",
+  "version": "9.0.0",
   "description": "FHIR Works on AWS hosted on AWS Lambda",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -28,6 +28,11 @@
     "prepublish": "tsc"
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "winston": "^3.3.3",
+    "winston-transport": "^4.4.0"
+>>>>>>> 1b7765a3a51694c9a11263fa76109cdf0c6e6f47
   },
   "devDependencies": {
     "@types/jest": "^26.0.19",

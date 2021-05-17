@@ -23,4 +23,5 @@ export * from './errors/UnauthorizedError';
 export * from './errors/TooManyConcurrentExportRequestsError';
 export * from './errors/InvalidSearchParameterError';
 export * from './validator';
+export { makeLogger } from './loggerBuilder';
 export { stubs } from './stubs';
