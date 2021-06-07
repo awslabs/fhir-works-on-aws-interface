@@ -9,6 +9,7 @@ export interface GlobalHistoryRequest {
     baseUrl: string; // server's URL
     queryParams?: any;
     searchFilters?: SearchFilter[];
+    tenantId?: string;
 }
 
 export interface TypeHistoryRequest extends GlobalHistoryRequest {

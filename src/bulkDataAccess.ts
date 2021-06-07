@@ -15,6 +15,7 @@ export interface InitiateExportRequest {
     since?: string;
     type?: string;
     groupId?: string;
+    tenantId?: string;
 }
 
 export interface GetExportStatusResponse {
@@ -47,7 +48,7 @@ export interface BulkDataAccess {
      * https://hl7.org/Fhir/uv/bulkdata/export/index.html#bulk-data-delete-request
      * @param jobId - Id of the job you would like to cancel the export request for
      */
-    cancelExport(jobId: string): Promise<void>;
+    cancelExport(jobId: string, tenantId?: string): Promise<void>;
 
     /**
      * Get the current status of the export request. This includes the jobStatus of the job.
@@ -58,5 +59,5 @@ export interface BulkDataAccess {
      * @param jobId - Id of the job you would like to get the export status for
      * @return GetExportStatusResponse - The status of the export job as well as additional metadata information if the job is now completed
      */
-    getExportStatus(jobId: string): Promise<GetExportStatusResponse>;
+    getExportStatus(jobId: string, tenantId?: string): Promise<GetExportStatusResponse>;
 }
