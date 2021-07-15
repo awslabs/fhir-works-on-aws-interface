@@ -43,6 +43,11 @@ export interface VerifyAccessTokenRequest {
     id?: string;
     vid?: string;
     bulkDataAuth?: BulkDataAuth;
+    /**
+     * The FHIR server base URL. It may contain a path in addition to the hostname. See: https://www.hl7.org/fhir/http.html#root
+     * @example https://fhir-server/path
+     */
+    fhirServiceBaseUrl?: string;
 }
 
 export interface AuthorizationBundleRequest {
@@ -68,6 +73,11 @@ export interface ReadResponseAuthorizedRequest {
     requestContext?: RequestContext;
     operation: TypeOperation | SystemOperation;
     readResponse: any;
+    /**
+     * The FHIR server base URL. It may contain a path in addition to the hostname. See: https://www.hl7.org/fhir/http.html#root
+     * @example https://fhir-server/path
+     */
+    fhirServiceBaseUrl?: string;
 }
 
 export interface WriteRequestAuthorizedRequest {
@@ -75,6 +85,11 @@ export interface WriteRequestAuthorizedRequest {
     requestContext?: RequestContext;
     operation: TypeOperation;
     resourceBody: any;
+    /**
+     * The FHIR server base URL. It may contain a path in addition to the hostname. See: https://www.hl7.org/fhir/http.html#root
+     * @example https://fhir-server/path
+     */
+    fhirServiceBaseUrl?: string;
 }
 
 export interface GetSearchFilterBasedOnIdentityRequest {
@@ -85,6 +100,11 @@ export interface GetSearchFilterBasedOnIdentityRequest {
     resourceType?: string;
     /** Used exclusively for `history-instance` operation */
     id?: string;
+    /**
+     * The FHIR server base URL. It may contain a path in addition to the hostname. See: https://www.hl7.org/fhir/http.html#root
+     * @example https://fhir-server/path
+     */
+    fhirServiceBaseUrl?: string;
 }
 
 export interface Authorization {
