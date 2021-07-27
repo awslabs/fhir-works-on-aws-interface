@@ -16,6 +16,9 @@ export interface InitiateExportRequest {
     type?: string;
     groupId?: string;
     tenantId?: string;
+    allowedResourceTypes?: string[];
+    serverUrl?: string;
+    fhirVersion?: string;
 }
 
 export interface GetExportStatusResponse {
