@@ -3,6 +3,8 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
+import { FhirVersion } from './constants';
+
 export type ExportJobStatus = 'completed' | 'failed' | 'in-progress' | 'canceled' | 'canceling';
 
 export type ExportType = 'system' | 'group' | 'patient';
@@ -18,7 +20,7 @@ export interface InitiateExportRequest {
     tenantId?: string;
     allowedResourceTypes?: string[];
     serverUrl?: string;
-    fhirVersion?: string;
+    fhirVersion?: FhirVersion;
 }
 
 export interface GetExportStatusResponse {
