@@ -22,6 +22,7 @@ export * from './errors/ResourceVersionNotFoundError';
 export * from './errors/UnauthorizedError';
 export * from './errors/TooManyConcurrentExportRequestsError';
 export * from './errors/InvalidSearchParameterError';
+export * from './errors/ResourceConflictError'
 export * from './validator';
 export { makeLogger } from './loggerBuilder';
 export { stubs } from './stubs';
