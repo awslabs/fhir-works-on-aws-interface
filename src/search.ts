@@ -14,6 +14,7 @@ export interface GlobalSearchRequest {
     baseUrl: string; // server's URL
     queryParams?: any;
     searchFilters?: SearchFilter[];
+    tenantId?: string;
 }
 
 export interface TypeSearchRequest extends GlobalSearchRequest {
