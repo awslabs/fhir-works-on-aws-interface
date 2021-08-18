@@ -3,6 +3,8 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
+import { FhirVersion } from './constants';
+
 export type ExportJobStatus = 'completed' | 'failed' | 'in-progress' | 'canceled' | 'canceling';
 
 export type ExportType = 'system' | 'group' | 'patient';
@@ -10,11 +12,15 @@ export type ExportType = 'system' | 'group' | 'patient';
 export interface InitiateExportRequest {
     requesterUserId: string;
     exportType: ExportType;
+    allowedResourceTypes: string[];
     transactionTime: string;
     outputFormat?: string;
     since?: string;
     type?: string;
     groupId?: string;
+    tenantId?: string;
+    serverUrl?: string;
+    fhirVersion?: FhirVersion;
 }
 
 export interface GetExportStatusResponse {
@@ -46,8 +52,9 @@ export interface BulkDataAccess {
      * generated during the export. This interface is to support the bulk export DELETE API
      * https://hl7.org/Fhir/uv/bulkdata/export/index.html#bulk-data-delete-request
      * @param jobId - Id of the job you would like to cancel the export request for
+     * @param tenantId - tenant identifier in a multi-tenancy setup
      */
-    cancelExport(jobId: string): Promise<void>;
+    cancelExport(jobId: string, tenantId?: string): Promise<void>;
 
     /**
      * Get the current status of the export request. This includes the jobStatus of the job.
@@ -56,7 +63,8 @@ export interface BulkDataAccess {
      * This interface is to support the bulk export Data Status Request API
      * https://hl7.org/Fhir/uv/bulkdata/export/index.html#bulk-data-status-request
      * @param jobId - Id of the job you would like to get the export status for
+     * @param tenantId - tenant identifier in a multi-tenancy setup
      * @return GetExportStatusResponse - The status of the export job as well as additional metadata information if the job is now completed
      */
-    getExportStatus(jobId: string): Promise<GetExportStatusResponse>;
+    getExportStatus(jobId: string, tenantId?: string): Promise<GetExportStatusResponse>;
 }
