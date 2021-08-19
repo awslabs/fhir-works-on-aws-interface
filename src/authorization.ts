@@ -54,6 +54,11 @@ export interface AuthorizationBundleRequest {
     userIdentity: KeyValueMap;
     requestContext?: RequestContext;
     requests: BatchReadWriteRequest[];
+    /**
+     * The FHIR server base URL. It may contain a path in addition to the hostname. See: https://www.hl7.org/fhir/http.html#root
+     * @example https://fhir-server/path
+     */
+    fhirServiceBaseUrl?: string;
 }
 
 export interface AllowedResourceTypesForOperationRequest {
