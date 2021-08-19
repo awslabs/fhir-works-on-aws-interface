@@ -10,7 +10,6 @@ export interface CreateResourceRequest {
     resource: any;
     id?: string;
     tenantId?: string;
-    ttlInSeconds?: number; // archive timestamp in Unix epoch time format in seconds
 }
 
 export interface UpdateResourceRequest {
@@ -19,7 +18,6 @@ export interface UpdateResourceRequest {
     resource: any;
     vid?: string; // used in version aware update
     tenantId?: string;
-    ttlInSeconds?: number; // archive timestamp in Unix epoch time format in seconds
 }
 
 export interface PatchResourceRequest {
@@ -28,7 +26,6 @@ export interface PatchResourceRequest {
     resource: any;
     vid?: string; // used in version aware patch
     tenantId?: string;
-    ttlInSeconds?: number; // archive timestamp in Unix epoch time format in seconds
 }
 
 export interface ReadResourceRequest {
