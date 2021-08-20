@@ -24,7 +24,7 @@ export interface OAuthStrategy {
     managementEndpoint?: string;
 }
 
-export type tokenEndpointAuthMethod = 'client_secret_basic' | 'client_secret_post';
+export type tokenEndpointAuthMethod = 'client_secret_basic' | 'client_secret_post' | 'private_key_jwt';
 
 /**
  * http://www.hl7.org/fhir/smart-app-launch/conformance/index.html#using-well-known
@@ -63,6 +63,14 @@ export interface SmartStrategy extends OAuthStrategy {
      * array of client authentication methods supported by the token endpoint.
      */
     tokenEndpointAuthMethodsSupported?: tokenEndpointAuthMethod[];
+    /**
+     * array of the supported JSON web signature algorithms for the token endpoint
+     */
+    tokenEndpointAuthSigningAlgValuesSupported?: string[];
+    /**
+     * URL of the dynamic client registration endpoint
+     */
+    registrationEndpoint?: string;
 }
 
 export interface Strategy {
