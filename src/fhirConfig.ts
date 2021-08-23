@@ -24,7 +24,7 @@ export interface OAuthStrategy {
     managementEndpoint?: string;
 }
 
-export type tokenEndpointAuthMethod = 'client_secret_basic' | 'client_secret_post';
+export type tokenEndpointAuthMethod = 'client_secret_basic' | 'client_secret_post' | 'private_key_jwt';
 
 /**
  * http://www.hl7.org/fhir/smart-app-launch/conformance/index.html#using-well-known
@@ -63,6 +63,14 @@ export interface SmartStrategy extends OAuthStrategy {
      * array of client authentication methods supported by the token endpoint.
      */
     tokenEndpointAuthMethodsSupported?: tokenEndpointAuthMethod[];
+    /**
+     * array of the supported JSON web signature algorithms for the token endpoint
+     */
+    tokenEndpointAuthSigningAlgValuesSupported?: string[];
+    /**
+     * URL of the dynamic client registration endpoint
+     */
+    registrationEndpoint?: string;
 }
 
 export interface Strategy {
@@ -151,6 +159,24 @@ export interface ProductInfo {
     copyright?: string;
 }
 
+export interface MultiTenancyConfig {
+    /**
+     * Enable multi-tenancy.
+     * This value is always true. To disable multi tenancy, remove the `multiTenancyConfig` altogether.
+     */
+    enableMultiTenancy: true;
+    /**
+     * When enabled, the tenantId is included on the server url to make it unique for each tenant. i.e. `<baseUrl>/tenant/<tenantId>`
+     */
+    useTenantSpecificUrl: boolean;
+    /**
+     * Path where the tenantId value is located on the JWT access token. For simple claims the path is simply the claim name.
+     * @example "tenantId"
+     * @example "nested.object.tenantId"
+     */
+    tenantIdClaimPath: string;
+}
+
 export interface FhirConfig {
     configVersion: ConfigVersion;
     productInfo: ProductInfo;
@@ -158,4 +184,5 @@ export interface FhirConfig {
     server: Server;
     profile: Profile;
     validators: Validator[];
+    multiTenancyConfig?: MultiTenancyConfig;
 }

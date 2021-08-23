@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [11.0.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v10.0.0...v11.0.0) (2021-08-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Removes ttlInSeconds from the persistence interface
+
+### Bug Fixes
+
+* add missing fhirServiceBaseUrl to AuthorizationBundleRequest ([#78](https://github.com/awslabs/fhir-works-on-aws-interface/issues/78)) ([3c56239](https://github.com/awslabs/fhir-works-on-aws-interface/commit/3c562396f54735053ea61a3f2127b079561279ff))
+
+
+* Remove ttlInSeconds ([#69](https://github.com/awslabs/fhir-works-on-aws-interface/issues/69)) ([4662772](https://github.com/awslabs/fhir-works-on-aws-interface/commit/466277287d7101f9aa841550faf9afde69cc1278))
+
+## [10.0.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v9.1.0...v10.0.0) (2021-08-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* add required parameter allowedResourceTypes for group export
+
+### Features
+
+* add multi-tenancy and group export related fields ([#76](https://github.com/awslabs/fhir-works-on-aws-interface/issues/76)) ([65c90b1](https://github.com/awslabs/fhir-works-on-aws-interface/commit/65c90b10bf3a7de62886dc8e1f59ae0c5415cf1e)), closes [#70](https://github.com/awslabs/fhir-works-on-aws-interface/issues/70) [#71](https://github.com/awslabs/fhir-works-on-aws-interface/issues/71) [#72](https://github.com/awslabs/fhir-works-on-aws-interface/issues/72) [#73](https://github.com/awslabs/fhir-works-on-aws-interface/issues/73)
+
 ## [9.1.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v9.0.0...v9.1.0) (2021-08-05)
 
 
