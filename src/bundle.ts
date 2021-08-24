@@ -47,7 +47,7 @@ export interface BatchReadWriteResponse {
     lastModified: string;
 }
 
-export type BatchReadWriteErrorType = 'USER_ERROR' | 'SYSTEM_ERROR';
+export type BatchReadWriteErrorType = 'USER_ERROR' | 'SYSTEM_ERROR' | 'CONFLICT_ERROR';
 export interface BundleResponse {
     readonly success: boolean;
     readonly errorType?: BatchReadWriteErrorType;
