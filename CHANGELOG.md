@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [11.1.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v11.0.0...v11.1.0) (2021-08-24)
+
+
+### Features
+
+* add routing for Conflict errors ([#81](https://github.com/awslabs/fhir-works-on-aws-interface/issues/81)) ([0b135ee](https://github.com/awslabs/fhir-works-on-aws-interface/commit/0b135eed7866215149b32c0887542f72dc7dac1a))
+
+
+### Bug Fixes
+
+* updating SmartStrategy interface to spec ([#80](https://github.com/awslabs/fhir-works-on-aws-interface/issues/80)) ([50b0a7e](https://github.com/awslabs/fhir-works-on-aws-interface/commit/50b0a7e322b1b3393574620539a83d137b706820))
+
 ## [11.0.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v10.0.0...v11.0.0) (2021-08-19)
 
 
