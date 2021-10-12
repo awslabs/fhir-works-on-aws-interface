@@ -26,6 +26,7 @@ export interface InitiateExportRequest {
 export interface GetExportStatusResponse {
     jobStatus: ExportJobStatus;
     jobOwnerId: string;
+    requiresAccessToken?: boolean;
     exportedFileUrls?: { type: string; url: string }[];
     transactionTime?: string;
     exportType?: ExportType;
