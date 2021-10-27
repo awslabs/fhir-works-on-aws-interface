@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [11.3.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v11.2.0...v11.3.0) (2021-10-27)
+
+
+### Features
+
+* add sessionId to search requests ([#87](https://github.com/awslabs/fhir-works-on-aws-interface/issues/87)) ([6284d53](https://github.com/awslabs/fhir-works-on-aws-interface/commit/6284d53bb44d6180b2d6304e42ba06aa9f5596cb))
+
 ## [11.2.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v11.1.0...v11.2.0) (2021-10-13)
 
 
