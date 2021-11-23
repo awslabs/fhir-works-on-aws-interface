@@ -25,7 +25,8 @@
     "release": "yarn run build && yarn run lint && yarn run test",
     "clean": "rm -rf build/* node_modules/* dist/* .serverless/* .nyc_output/* lib/*",
     "local": "node .",
-    "prepublish": "tsc"
+    "prepublish": "tsc",
+    "standard-version": "standard-version --skip.tag=true"
   },
   "dependencies": {
     "winston": "^3.3.3",
@@ -45,6 +46,7 @@
     "jest-each": "^26.4.2",
     "jest-mock-extended": "^1.0.8",
     "prettier": "^2.4.1",
+    "standard-version": "^9.3.2",
     "ts-jest": "^26.4.4",
     "typescript": "^4.1.3"
   },
