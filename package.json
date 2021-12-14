@@ -55,6 +55,7 @@
       "ts",
       "js"
     ],
+    "collectCoverage": true,
     "coverageReporters": [
       "text",
       "html"
