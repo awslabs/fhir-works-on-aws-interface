@@ -81,5 +81,5 @@ export interface Search {
     /**
      * Verify that a search string used as criteria in Subscription resource is valid
      */
-    isSubscriptionSearchCriteriaValid(searchCriteria: string): void;
+    validateSubscriptionSearchCriteria(searchCriteria: string): void;
 }
