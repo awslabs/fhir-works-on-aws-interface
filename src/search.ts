@@ -78,4 +78,9 @@ export interface Search {
      * See https://www.hl7.org/fhir/capabilitystatement.html
      */
     getCapabilities(): Promise<SearchCapabilityStatement>;
+    /**
+     * Verify that a search string use as criteria in Subscription resource is valid
+     * and does not use _revinclude, _include, _sort, _count and chained parameter
+     */
+    isSubscriptionSearchCriteriaValid(searchCriteria: string): Boolean;
 }
