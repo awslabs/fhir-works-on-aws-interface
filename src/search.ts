@@ -79,8 +79,7 @@ export interface Search {
      */
     getCapabilities(): Promise<SearchCapabilityStatement>;
     /**
-     * Verify that a search string use as criteria in Subscription resource is valid
-     * and does not use _revinclude, _include, _sort, _count and chained parameter
+     * Verify that a search string used as criteria in Subscription resource is valid
      */
-    isSubscriptionSearchCriteriaValid(searchCriteria: string): boolean;
+    isSubscriptionSearchCriteriaValid(searchCriteria: string): void;
 }
