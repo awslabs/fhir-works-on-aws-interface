@@ -34,7 +34,7 @@ export module stubs {
             throw new Error('Method not implemented.');
         },
 
-        isSubscriptionSearchCriteriaValid(searchCriteria) {
+        validateSubscriptionSearchCriteria(searchCriteria) {
             throw new Error('Method not implemented.');
         },
     };
