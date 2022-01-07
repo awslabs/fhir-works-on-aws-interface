@@ -82,5 +82,5 @@ export interface Search {
      * Verify that a search string use as criteria in Subscription resource is valid
      * and does not use _revinclude, _include, _sort, _count and chained parameter
      */
-    isSubscriptionSearchCriteriaValid(searchCriteria: string): Boolean;
+    isSubscriptionSearchCriteriaValid(searchCriteria: string): boolean;
 }
