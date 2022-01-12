@@ -131,4 +131,10 @@ export interface Persistence {
      * the appropriate action to take.
      */
     conditionalDeleteResource(request: ConditionalDeleteResourceRequest, queryParams: any): Promise<GenericResponse>;
+
+    /**
+     * Returns an array of all active Subscriptions.
+     * If tenantId is supplied, this method will only return Subscriptions owned by that tenant.
+     */
+    getActiveSubscriptions(params: { tenantId?: string }): Promise<Record<string, any>[]>;
 }
