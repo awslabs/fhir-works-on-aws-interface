@@ -88,7 +88,10 @@ export interface Auth {
 
 export interface Server {
     url: string;
-    alternativeUrls?: string[]
+    /**
+     * replace the url's hostname with the incoming request's host header; usefully when multiple upstream API gateway's or custom DNS
+     */
+    dynamicHostName?: boolean 
 }
 
 export interface Resource {
