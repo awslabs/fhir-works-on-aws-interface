@@ -263,7 +263,7 @@ export module stubs {
             throw new Error('Method not implemented.');
         },
 
-        getActiveSubscriptions(params) {
+        getActiveSubscriptions(params: { tenantId: string }) {
             throw new Error('Method not implemented.');
         },
     };
