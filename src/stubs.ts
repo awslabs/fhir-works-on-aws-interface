@@ -33,6 +33,10 @@ export module stubs {
         globalSearch(request) {
             throw new Error('Method not implemented.');
         },
+
+        validateSubscriptionSearchCriteria(searchCriteria) {
+            throw new Error('Method not implemented.');
+        },
     };
 
     export const history: History = {
