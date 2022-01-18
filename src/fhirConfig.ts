@@ -91,7 +91,7 @@ export interface Server {
     /**
      * replace the url's hostname with the incoming request's host header; usefully when multiple upstream API gateway's or custom DNS
      */
-    dynamicHostName?: boolean 
+    dynamicHostName?: boolean;
 }
 
 export interface Resource {
