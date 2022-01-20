@@ -1,9 +1,9 @@
-import { VerbType } from './authorization';
+import { TypeOperation } from './constants';
 
 export interface Validator {
     /**
      * returns a resolved Promise if the resource is valid. Otherwise throws an error
      * @throws InvalidResourceError
      */
-    validate(resource: any, params: { tenantId?: string; httpVerb?: VerbType }): Promise<void>;
+    validate(resource: any, params?: { tenantId?: string; httpVerb?: TypeOperation }): Promise<void>;
 }
