@@ -5,7 +5,13 @@
 
 name: Code Coverage Report
 
-on: [push, pull_request]
+on:
+  pull_request:
+    branches:
+      - mainline
+  push:
+    branches:
+      - mainline
 
 jobs:
   report-test-coverage:
