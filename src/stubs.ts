@@ -33,6 +33,10 @@ export module stubs {
         globalSearch(request) {
             throw new Error('Method not implemented.');
         },
+
+        validateSubscriptionSearchCriteria(searchCriteria) {
+            throw new Error('Method not implemented.');
+        },
     };
 
     export const history: History = {
@@ -256,6 +260,10 @@ export module stubs {
         },
 
         conditionalDeleteResource(request, queryParams) {
+            throw new Error('Method not implemented.');
+        },
+
+        getActiveSubscriptions(params: { tenantId: string }) {
             throw new Error('Method not implemented.');
         },
     };
