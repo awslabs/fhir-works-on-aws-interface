@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.0.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v11.3.0...v12.0.0) (2022-03-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* add new required methods `getActiveSubscriptions` and `validateSubscriptionSearchCriteria`
+
+### Features
+
+* add methods to support FHIR Subscriptions ([#100](https://github.com/awslabs/fhir-works-on-aws-interface/issues/100)) ([a980196](https://github.com/awslabs/fhir-works-on-aws-interface/commit/a980196b6ff153efc816d8e35353118169757d68)), closes [#95](https://github.com/awslabs/fhir-works-on-aws-interface/issues/95) [#94](https://github.com/awslabs/fhir-works-on-aws-interface/issues/94) [#97](https://github.com/awslabs/fhir-works-on-aws-interface/issues/97)
+
+
 ## [11.3.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v11.2.0...v11.3.0) (2021-10-27)
 
 
