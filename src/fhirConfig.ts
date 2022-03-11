@@ -175,6 +175,16 @@ export interface MultiTenancyConfig {
      * @example "nested.object.tenantId"
      */
     tenantIdClaimPath: string;
+    /**
+     * The prefix helps to identify the tenant specific values in a custom claim.
+     * @example "tenant:" would identify the tenant value "tenant:12345" in "cognito:groups" claim
+     */
+    tenantIdClaimValuePrefix?: string;
+    /**
+     * This optional option specifies a scope, which allows access to all tenants.
+     * This option is only applicable if useTenantSpecificUrl is enabled.
+     */
+    grantAccessAllTenantsScope?: string;
 }
 
 export interface FhirConfig {
