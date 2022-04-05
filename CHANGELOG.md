@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.1.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v12.0.0...v12.1.0) (2022-04-05)
+
+
+### Features
+
+* add support for Batch Bundle ([#102](https://github.com/awslabs/fhir-works-on-aws-interface/issues/102)) ([f77720b](https://github.com/awslabs/fhir-works-on-aws-interface/commit/f77720b6d039138830d7d8d665608ffbf235a04e))
+
 ## [12.0.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v11.3.0...v12.0.0) (2022-03-03)
 
 
