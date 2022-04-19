@@ -45,6 +45,7 @@ export interface BatchReadWriteResponse {
     operation: TypeOperation | SystemOperation;
     resource: any;
     lastModified: string;
+    error?: string;
 }
 
 export type BatchReadWriteErrorType = 'USER_ERROR' | 'SYSTEM_ERROR' | 'CONFLICT_ERROR';
