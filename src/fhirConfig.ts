@@ -176,7 +176,12 @@ export interface MultiTenancyConfig {
      */
     tenantIdClaimPath: string;
 }
-
+export interface Logging {
+    /**
+     * When enabled, lambda process start will be logged
+     */
+    lambdaLifecycle: boolean;
+}
 export interface FhirConfig {
     configVersion: ConfigVersion;
     productInfo: ProductInfo;
@@ -185,4 +190,5 @@ export interface FhirConfig {
     profile: Profile;
     validators: Validator[];
     multiTenancyConfig?: MultiTenancyConfig;
+    logging?: Logging;
 }
