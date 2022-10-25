@@ -46,6 +46,7 @@ export interface BatchReadWriteResponse {
     resource: any;
     lastModified: string;
     error?: string;
+    recreate?: boolean; // indicates if an 'update' operation is a recreate of a deleted resource instance
 }
 
 export type BatchReadWriteErrorType = 'USER_ERROR' | 'SYSTEM_ERROR' | 'CONFLICT_ERROR';

@@ -6,4 +6,5 @@
 export interface GenericResponse {
     readonly message: string;
     readonly resource?: any;
+    readonly recreate?: boolean; // indicates if an 'update' operation is a recreate of a deleted resource instance
 }
