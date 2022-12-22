@@ -6,6 +6,7 @@
 import { TypeOperation, SystemOperation } from './constants';
 import { ExportType } from './bulkDataAccess';
 import { BulkDataAuth } from './authorization';
+import { UnauthorizedError } from './errors/UnauthorizedError';
 
 export function chunkArray(myArray: any[], chunkSize: number): any[][] {
     const results = [];
@@ -152,7 +153,7 @@ export function getRequestInformation(
             return { operation: 'create', resourceType: urlSplit[0] };
         }
         default: {
-            throw new Error('Unable to parse the http verb');
+            throw new UnauthorizedError('Unable to parse the http verb');
         }
     }
 }
