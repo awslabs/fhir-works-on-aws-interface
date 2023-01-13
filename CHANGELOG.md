@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [12.1.1](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v12.1.0...v12.1.1) (2022-12-22)
+
+
+### Bug Fixes
+
+* change error from 500 to 405 ([#109](https://github.com/awslabs/fhir-works-on-aws-interface/issues/109)) ([08158c5](https://github.com/awslabs/fhir-works-on-aws-interface/commit/08158c559cd63d41db87dac61b5e4477efed8b38))
+
 ## [12.1.0](https://github.com/awslabs/fhir-works-on-aws-interface/compare/v12.0.0...v12.1.0) (2022-04-05)
 
 
