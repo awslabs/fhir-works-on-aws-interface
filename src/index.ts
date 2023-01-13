@@ -24,6 +24,7 @@ export * from './errors/TooManyConcurrentExportRequestsError';
 export * from './errors/InvalidSearchParameterError';
 export * from './errors/ResourceConflictError';
 export * from './errors/MethodNotAllowedError';
+export * from './errors/BadRequestError';
 export * from './validator';
 export { makeLogger } from './loggerBuilder';
 export { stubs } from './stubs';
