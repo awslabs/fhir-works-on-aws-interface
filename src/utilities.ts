@@ -3,6 +3,7 @@
  *  SPDX-License-Identifier: Apache-2.0
  */
 
+import * as AWS from 'aws-sdk';
 import { TypeOperation, SystemOperation } from './constants';
 import { ExportType } from './bulkDataAccess';
 import { BulkDataAuth } from './authorization';
@@ -156,4 +157,30 @@ export function getRequestInformation(
             throw new MethodNotAllowedError('Unable to parse the http verb');
         }
     }
+}
+
+export async function encryptKMS(plaintext: string, keyId: string): Promise<string> {
+    const kms = new AWS.KMS();
+    const params = {
+        KeyId: keyId, // `${process.env.LOGGING_MIDDLEWARE_KMS_KEY}`
+        Plaintext: plaintext,
+    };
+    const encryptRes = await kms.encrypt(params).promise();
+    if (Buffer.isBuffer(encryptRes.CiphertextBlob)) {
+        return Buffer.from(encryptRes.CiphertextBlob ? encryptRes.CiphertextBlob : 'undefined').toString('base64');
+    }
+    throw new Error('CiphertextBlob is not a buffer');
+}
+
+export async function decryptKMS(encoded: string, keyId: string): Promise<string> {
+    const kms = new AWS.KMS();
+    const decryptParams = {
+        CiphertextBlob: Buffer.from(encoded, 'base64'),
+        KeyId: keyId,
+    };
+    const decryptRes = await kms.decrypt(decryptParams).promise();
+    if (Buffer.isBuffer(decryptRes.Plaintext)) {
+        return Buffer.from(decryptRes.Plaintext ? decryptRes.Plaintext : 'undefined').toString();
+    }
+    throw new Error('The plaintext in decriptMetaData is not a buffer');
 }

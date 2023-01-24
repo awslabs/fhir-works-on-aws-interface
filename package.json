@@ -29,6 +29,7 @@
     "standard-version": "standard-version --skip.tag=true"
   },
   "dependencies": {
+    "aws-sdk": "^2.1300.0",
     "winston": "^3.3.3",
     "winston-transport": "^4.4.0"
   },
