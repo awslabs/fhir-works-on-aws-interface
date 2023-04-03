@@ -1,6 +1,7 @@
 # fhir-works-on-aws-interface
 
 ## Purpose
+# This GitHub repository has been migrated. You can now find FHIR Works on AWS at https://github.com/aws-solutions/fhir-works-on-aws.
 
 Please visit [fhir-works-on-aws-deployment](https://github.com/awslabs/fhir-works-on-aws-deployment) for overall vision of the project and for more context.
 
